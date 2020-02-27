@@ -28,7 +28,7 @@ function App() {
                 path="/admin/building"
                 component={FormBuilding}
               />
-                            <Route
+              <Route
                 exact
                 path="/admin/key"
                 component={FormKey}

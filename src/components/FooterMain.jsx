@@ -24,7 +24,8 @@ export default function LabelBottomNavigation() {
   };
 
   return (
-    <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
+    
+    <BottomNavigation id="footer" value={value} onChange={handleChange} className={classes.root}>
       <BottomNavigationAction label="Home" value="home" icon={<HomeIcon />} />
       <BottomNavigationAction label="Infos" value="infos" icon={<InfoIcon />} />
       <BottomNavigationAction label="Profile" value="profile" icon={<AccountCircle />} />

@@ -1,12 +1,17 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import Icon from "@material-ui/core/Icon";
 
 const useStyles = makeStyles(theme => ({
   root: {
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
-      width: 200
+      width: 350
+    },
+    button: {
+      margin: theme.spacing(1),
     }
   }
 }));
@@ -21,58 +26,23 @@ export default function FormPropsTextFields() {
         noValidate
         autoComplete="off"
       >
-        <TextField
-          required
-          id="outlined-required"
-          label="Required"
-          defaultValue="Hello World"
-          variant="outlined"
-        />
+        <h2>enter an email to send this key</h2>
         <TextField
           disabled
-          id="outlined-disabled"
-          label="Disabled"
-          defaultValue="Hello World"
+          id="filled-read-only-input"
+          label="Unique key"
+          defaultValue="d0562068-5983-11ea-8e2d-0242ac130003"
           variant="outlined"
         />
-        <TextField
-          id="outlined-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          variant="outlined"
-        />
-        <TextField
-          id="outlined-read-only-input"
-          label="Read Only"
-          defaultValue="Hello World"
-          InputProps={{
-            readOnly: true
-          }}
-          variant="outlined"
-        />
-        <TextField
-          id="outlined-number"
-          label="Number"
-          type="number"
-          InputLabelProps={{
-            shrink: true
-          }}
-          variant="outlined"
-        />
-        <TextField
-          id="outlined-search"
-          label="Search field"
-          type="search"
-          variant="outlined"
-        />
-        <TextField
-          id="outlined-helperText"
-          label="Helper text"
-          defaultValue="Default Value"
-          helperText="Some important text"
-          variant="outlined"
-        />
+<TextField id="outlined-basic" label="E-mail" variant="outlined" />
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          // endIcon={<Icon>send</Icon>}
+        >
+          Send
+        </Button>
       </form>
     </div>
   );

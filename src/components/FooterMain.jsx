@@ -28,7 +28,7 @@ export default function LabelBottomNavigation() {
       <BottomNavigationAction label="Home" value="home" icon={<HomeIcon />} />
       <BottomNavigationAction label="Infos" value="infos" icon={<InfoIcon />} />
       <BottomNavigationAction label="Profile" value="profile" icon={<AccountCircle />} />
-      <BottomNavigationAction label="My cocoon" value="M    y co-coon" icon={<ApartmentIcon />} />
+      <BottomNavigationAction label="My cocoon" value="My co-coon" icon={<ApartmentIcon />} />
     </BottomNavigation>
   );
 }

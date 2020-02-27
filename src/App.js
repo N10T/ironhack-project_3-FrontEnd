@@ -4,8 +4,8 @@ import React from "react";
 
 // pages components
 import home from "./views/home";
-import FormBuilding from "./components/Forms/FormBuilding"
-import FormKey from "./components/Forms/FormKey"
+import FormBuilding from "./components/Forms/FormBuilding";
+import FormKey from "./components/Forms/FormKey";
 import FormInformation from "./components/Forms/FormInformation";
 
 

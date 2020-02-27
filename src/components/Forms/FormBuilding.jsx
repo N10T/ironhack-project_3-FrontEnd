@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 // styles
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,7 +6,9 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import APIHandler from './../../api/APIHandler'
 
-const useStyles = makeStyles(theme => ({
+const FormBuilding = props => {
+
+  const useStyles = makeStyles(theme => ({
     root: {
       "& .MuiTextField-root": {
         margin: theme.spacing(1),
@@ -15,59 +17,36 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
-export default function FormBuilding ({mode = "create", _id, history, match}) {
   const classes = useStyles();
-  const [
-      { name, number, street, postalcode, city, country},
-      setState
-  ] = useState({
-      name:"",
-      number:"",
-      street:"",
-      postalcode:"",
-      city:"",
-      country:""
-  });
+  const [formValues, setFormValues] = useState({});
 
-  const handleInputs = e => {
-      e.persist();
-      setState(prevValues => ({
-        ...prevValues,
-        [e.target.name]: e.target.value
-      }));
-      console.log({name, number, street, postalcode, city, country});
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(formValues);
+    APIHandler.post("/admin/building", formValues);
   };
 
-  const handleFormSubmit = async e => {
-      e.preventDefault();
-      const fd = new FormData();
-      fd.append("name", name);
-      fd.append("number", number);
-      fd.append("street", street);
-      fd.append("postalcode", postalcode);
-      fd.append("city", city);
-      fd.append("country", country);
-
-    //   try {
-    //       history.push("/building")
-    //   }
-  }
+  const handleInputs = e => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setFormValues({ ...formValues, [name]: value});
+    console.log(formValues);
+  };
 
   return (
-    //   <div className="fullwidth">
-      <form
-        className={classes.root+" one-column"}
+    <form
+        className={classes.root + " one-column"}
         noValidate
         autoComplete="off"
         id="newBuilding"
-        fullWidth
-        onSubmit={handleFormSubmit}
+        onSubmit={handleSubmit}
         onChange={handleInputs}
         >
             <TextField
             id="standard-basic"
             label="Building"
             size="small"
+            disabled
             />
             <TextField
             id="outlined-basic"
@@ -81,6 +60,7 @@ export default function FormBuilding ({mode = "create", _id, history, match}) {
             id="standard-basic"
             label="Adress"
             size="small"
+            disabled
             />
             <TextField
             id="outlined-basic"
@@ -129,6 +109,7 @@ export default function FormBuilding ({mode = "create", _id, history, match}) {
             create
             </Button>
         </form>
-        // </div>
   );
-}
+};
+
+export default FormBuilding;

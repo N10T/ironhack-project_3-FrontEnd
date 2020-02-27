@@ -26,7 +26,7 @@ export default function FormBuilding () {
                 // onSubmit={this.handleFormSubmit}
                 // onChange={this.handleInputs}
                 >
-                    <h2>Building:</h2>
+                    <h1>Building:</h1>
                     <TextField
                         id="outlined-basic"
                         label="Building name"

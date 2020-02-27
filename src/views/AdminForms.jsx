@@ -10,7 +10,7 @@ const forms = {
 };
 
 
-export default function AdminForms() {
+export default function AdminForms(props) {
     const { endpoint, id: resourceId, mode } = props.match.params;
     const ActiveForm = forms[endpoint];
 

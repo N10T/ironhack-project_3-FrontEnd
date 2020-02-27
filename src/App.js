@@ -4,7 +4,6 @@ import React from "react";
 
 // pages components
 import home from "./views/home";
-import AdminForms from "./views/AdminForms";
 import FormBuilding from "./components/Forms/FormBuilding"
 
 

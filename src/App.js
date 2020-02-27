@@ -1,9 +1,18 @@
 import './App.css';
 import { Route, Switch } from "react-router-dom";
 import React from "react";
+
+// pages components
+import home from "./views/home";
+import AdminForms from "./views/AdminForms";
+import FormBuilding from "./components/Forms/FormBuilding"
+
+
+// partials
 import HeaderMain from "./components/HeaderMain";
 import FooterMain from "./components/FooterMain";
-import home from "./views/home";
+
+// auth
 
 
 function App() {
@@ -12,6 +21,11 @@ function App() {
           <HeaderMain />
             <Switch>
               <Route exact path="/" component={home} />
+              <Route
+                exact
+                path="/admin/building"
+                component={FormBuilding}
+              />
             </Switch>
           <FooterMain />
         </React.Fragment>

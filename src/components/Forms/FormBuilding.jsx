@@ -1,85 +1,115 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 // styles
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import APIHandler from './../../api/APIHandler'
 
-const useStyles = makeStyles(theme => ({
+const FormBuilding = props => {
+
+  const useStyles = makeStyles(theme => ({
     root: {
-      '& > *': {
+      "& .MuiTextField-root": {
         margin: theme.spacing(1),
-        width: 200,
-      },
-    },
+        width: 250
+      }
+    }
   }));
 
-export default function FormBuilding () {
   const classes = useStyles();
+  const [formValues, setFormValues] = useState({});
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(formValues);
+    APIHandler.post("/admin/building", formValues);
+  };
+
+  const handleInputs = e => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setFormValues({ ...formValues, [name]: value});
+    console.log(formValues);
+  };
 
   return (
-      <form
-                className={classes.root}
-                noValidate
-                autoComplete="off"
-                id="newBuilding"
-                // onSubmit={this.handleFormSubmit}
-                // onChange={this.handleInputs}
-                >
-                    <h1>Building:</h1>
-                    <TextField
-                        id="outlined-basic"
-                        label="Building name"
-                        variant="outlined"
-                        type="text"
-                        name="name"
-                    />
-                    <label
-                        className="label"
-                        htmlFor="adress">
-                        Adress:
-                    </label>
-                    <TextField
-                        id="outlined-basic"
-                        label="Number"
-                        variant="outlined"
-                        type="number"
-                        name="number"
-                    />
-                    <TextField
-                        id="outlined-basic"
-                        label="Street"
-                        variant="outlined"
-                        type="text"
-                        name="street"
-                    />
-                    <TextField
-                        id="outlined-basic"
-                        label="Postalcode"
-                        variant="outlined"
-                        type="text"
-                        name="postalcode"
-                    />
-                    <TextField
-                        id="outlined-basic"
-                        label="City"
-                        variant="outlined"
-                        type="text"
-                        name="city"
-                    />
-                    <TextField
-                        id="outlined-basic"
-                        label="Country"
-                        variant="outlined"
-                        type="text"
-                        name="country"
-                    />
-                    <Button
-                    variant="contained"
-                    color="primary"
-                    href="#contained-buttons">
-                    create
-                    </Button>
-                </form>
+    <form
+        className={classes.root + " one-column"}
+        noValidate
+        autoComplete="off"
+        id="newBuilding"
+        onSubmit={handleSubmit}
+        onChange={handleInputs}
+        >
+            <TextField
+            id="standard-basic"
+            label="Building"
+            size="small"
+            disabled
+            />
+            <TextField
+            id="outlined-basic"
+            label="Building name"
+            variant="outlined"
+            type="text"
+            name="name"
+            size="small"
+            />
+            <TextField
+            id="standard-basic"
+            label="Adress"
+            size="small"
+            disabled
+            />
+            <TextField
+            id="outlined-basic"
+            label="Number"
+            variant="outlined"
+            type="number"
+            name="number"
+            size="small"
+            />
+            <TextField
+            id="outlined-basic"
+            label="Street"
+            variant="outlined"
+            type="text"
+            name="street"
+            size="small"
+            />
+            <TextField
+            id="outlined-basic"
+            label="Postalcode"
+            variant="outlined"
+            type="text"
+            name="postalcode"
+            size="small"
+            />
+            <TextField
+            id="outlined-basic"
+            label="City"
+            variant="outlined"
+            type="text"
+            name="city"
+            size="small"
+            />
+            <TextField
+            id="outlined-basic"
+            label="Country"
+            variant="outlined"
+            type="text"
+            name="country"
+            size="small"
+            />
+            <Button
+            variant="contained"
+            color="primary"
+            href="#contained-buttons">
+            create
+            </Button>
+        </form>
   );
-}
+};
+
+export default FormBuilding;

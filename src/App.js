@@ -1,4 +1,4 @@
-import './App.css';
+import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import React from "react";
 
@@ -8,7 +8,8 @@ import FormBuilding from "./components/Forms/FormBuilding";
 import EditBuilding from "./components/Forms/EditBuilding"
 import FormKey from "./components/Forms/FormKey";
 import FormInformation from "./components/Forms/FormInformation";
-
+import SignUp from "./components/Forms/SignUp";
+import SignIn from "./components/Forms/SignIn";
 
 // partials
 import HeaderMain from "./components/HeaderMain";
@@ -17,37 +18,22 @@ import FooterMain from "./components/FooterMain";
 
 // auth
 
-
 function App() {
   return (
-<React.Fragment>
-          <HeaderMain />
-          {/* <SearchBar /> */}
-            <Switch>
-              <Route exact path="/" component={home} />
-              <Route
-                exact
-                path="/admin/building"
-                component={FormBuilding}
-              />
-              <Route
-                exact
-                path="/admin/building/:id"
-                component={EditBuilding}
-              />
-              <Route
-                exact
-                path="/admin/key"
-                component={FormKey}
-              />
-                            <Route
-                exact
-                path="/building/create-information"
-                component={FormInformation}
-              />
-            </Switch>
-          <FooterMain />
-        </React.Fragment>
+    <React.Fragment>
+      <HeaderMain />
+      {/* <SearchBar /> */}
+      <Switch>
+        <Route exact path="/" component={home} />
+        <Route exact path="/admin/building" component={FormBuilding} />
+        <Route exact path="/admin/building/:id" component={EditBuilding} />
+        <Route exact path="/admin/key" component={FormKey} />
+        <Route exact path="/building/create-information" component={FormInformation} />
+        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/signin" component={SignIn} />
+      </Switch>
+      <FooterMain />
+    </React.Fragment>
   );
 }
 

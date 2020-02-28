@@ -1,4 +1,5 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme  } from '@material-ui/core/styles';
+
 // import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
@@ -10,9 +11,9 @@ const theme = createMuiTheme({
         contrastText: '#fff',
       },
       secondary: {
-        light: '#ff7961',
-        main: '#f44336',
-        dark: '#ba000d',
+        light: '#FFDCB3',
+        main: '#E5B67E',
+        dark: '#BB8749',
         contrastText: '#000',
       },
     },

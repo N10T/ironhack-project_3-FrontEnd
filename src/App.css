@@ -1,21 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Spartan&display=swap');
+
+/* font-family: 'Roboto', ;
+font-family: 'Roboto Condensed', ; */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Roboto;
 }
 header, #footer {
   z-index: 5;
 }
 
+header {
+  margin-bottom: 1vh;
+}
+
+h6.MuiTypography-root.makeStyles-title-3.MuiTypography-h6{
+  display: flex;
+  justify-content: center;
+}
 #footer {
   position: fixed;
   bottom: 0;
+  margin-top: 1vh;
 }
 
 .one-column {
   display: grid;
   justify-items: center;
   align-items: end;
+}
+
+.one-column > button:first-child{
+  margin: 2vh;
 }
 
 .fullwidth {
@@ -39,4 +58,51 @@ border: 1px solid blue
   overflow-y: scroll;
   height: 100px;
   width: 270px;
+}
+
+.is-hidden{
+  display: none;
+}
+
+.icon-avatar {
+  align-items: center;
+  border: 2px solid #59a27a;
+  border-radius: 50%;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  min-height: 100px;
+  min-width: 100px;
+  overflow: hidden;
+  position: relative;
+  width: 100px;
+}
+
+.icon-avatar:hover .MuiSvgIcon-root {
+  cursor: pointer;
+}
+
+.icon-image{
+  align-items: center;
+  border: 2px solid #59a27a;
+  border-radius: 5px;
+  display: flex;
+  height: 30vh;
+  justify-content: center;
+  min-height: 100%;
+  min-width: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.center{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex-grow : 1
+}
+
+.makeStyles-root-113{
+  width: 95vw;
 }

@@ -1,8 +1,9 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import Icon from "@material-ui/core/Icon";
+import theme from './../palette/palette'
+import SendIcon from '@material-ui/icons/Send';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,23 +27,33 @@ export default function FormPropsTextFields() {
         noValidate
         autoComplete="off"
       >
-        <h2>enter an email to send this key</h2>
+        <ThemeProvider theme={theme}>
+        <TextField
+          disabled
+          id="standard-basic"
+          label="Enter an email to send this key"
+          size="small"
+          />
         <TextField
           disabled
           id="filled-read-only-input"
           label="Unique key"
           defaultValue="d0562068-5983-11ea-8e2d-0242ac130003"
           variant="outlined"
-        />
-<TextField id="outlined-basic" label="E-mail" variant="outlined" />
+          size="small"
+          />
+<TextField required="true" focused="true" id="outlined-basic" label="E-mail" variant="outlined" />
+
         <Button
           variant="contained"
           color="primary"
           className={classes.button}
-          // endIcon={<Icon>send</Icon>}
+          size="small"
+          endIcon={<SendIcon/>}
         >
           Send
         </Button>
+        </ThemeProvider>
       </form>
     </div>
   );

@@ -5,6 +5,7 @@ import React from "react";
 // pages components
 import home from "./views/home";
 import FormBuilding from "./components/Forms/FormBuilding";
+import EditBuilding from "./components/Forms/EditBuilding"
 import FormKey from "./components/Forms/FormKey";
 import FormInformation from "./components/Forms/FormInformation";
 
@@ -28,6 +29,11 @@ function App() {
                 exact
                 path="/admin/building"
                 component={FormBuilding}
+              />
+              <Route
+                exact
+                path="/admin/building/:id"
+                component={EditBuilding}
               />
               <Route
                 exact

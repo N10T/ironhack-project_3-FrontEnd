@@ -22,8 +22,9 @@ const FormBuilding = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    console.log("submit");
     console.log(formValues);
-    APIHandler.post("/admin/building", formValues);
+    APIHandler.post("/buildings", formValues);
   };
 
   const handleInputs = e => {
@@ -103,9 +104,10 @@ const FormBuilding = props => {
             size="small"
             />
             <Button
+            type="submit"
             variant="contained"
             color="primary"
-            href="#contained-buttons">
+            >
             create
             </Button>
         </form>

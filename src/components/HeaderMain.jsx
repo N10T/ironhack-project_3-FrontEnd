@@ -28,7 +28,7 @@ export default function ButtonAppBar() {
   return (
     <div className={classes.root}>
       <ThemeProvider theme={theme}>
-      <AppBar position="static" color="primary">
+      <AppBar position="fixed" color="primary">
         <Toolbar>
 
           <Typography variant="h6" className={classes.title}>

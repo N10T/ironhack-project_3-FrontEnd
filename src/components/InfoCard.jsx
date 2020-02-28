@@ -48,6 +48,7 @@ export default function RecipeReviewCard() {
   };
 
   return (
+      <div className="center card">
     <Card className={classes.root}>
       <CardHeader
         avatar={
@@ -65,7 +66,7 @@ export default function RecipeReviewCard() {
       />
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
+        image="https://source.unsplash.com/350x200/?beer"
         title="Paella dish"
       />
       <CardContent>
@@ -120,5 +121,6 @@ export default function RecipeReviewCard() {
         </CardContent>
       </Collapse>
     </Card>
+    </div>
   );
 }

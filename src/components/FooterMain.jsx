@@ -33,7 +33,7 @@ export default function LabelBottomNavigation() {
       <BottomNavigationAction href="/building/create-information" label="" value="New post" icon={<AddCircleIcon />} />
       <BottomNavigationAction label="" value="Messages" icon={<MessageBadge />} />
       {/* <BottomNavigationAction label="Profile" value="profile" icon={<AccountCircle />} /> */}
-      <BottomNavigationAction label="" value="My cocoon" icon={<ApartmentIcon />} />
+      <BottomNavigationAction href="/user/building" label="" value="My cocoon" icon={<ApartmentIcon />} />
     </BottomNavigation>
   );
 }

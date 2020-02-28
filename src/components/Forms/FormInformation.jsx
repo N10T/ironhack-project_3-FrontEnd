@@ -74,7 +74,7 @@ export default function RecipeReviewCard() {
 
   return (
     <ThemeProvider theme={theme}>
-<div className="user-form one-column">
+<div className="user-form">
  <form
         className={classes.root}
         noValidate

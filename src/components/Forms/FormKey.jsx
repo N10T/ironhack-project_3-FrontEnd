@@ -42,7 +42,7 @@ export default function FormPropsTextFields() {
           variant="outlined"
           size="small"
           />
-<TextField id="outlined-basic" label="E-mail" variant="outlined" />
+<TextField required="true" focused="true" id="outlined-basic" label="E-mail" variant="outlined" />
 
         <Button
           variant="contained"

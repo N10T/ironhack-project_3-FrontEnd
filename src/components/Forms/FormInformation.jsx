@@ -1,41 +1,62 @@
-import React, { useContext, useState } from "react";
-import TextField from "@material-ui/core/TextField";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import InputLabel from "@material-ui/core/InputLabel";
 import theme from "../palette/palette";
-import AvatarUser from "../Upload/AvatarUser";
-import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import ImageInfo from './../Upload/ImageInfo';
+import FormControl from "@material-ui/core/FormControl";
+
+import Select from "@material-ui/core/Select";
+import Button from "@material-ui/core/Button";
+import ImageInfo from "./../Upload/ImageInfo";
+import React from "react";
+import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
+import Avatar from "@material-ui/core/Avatar";
+import { red } from "@material-ui/core/colors";
+import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      width: 350
-    },
-    button: {
-      margin: theme.spacing(1)
-    },
-    formControl: {
-        margin: theme.spacing(1),
-        minWidth: 120,
-      },
-      selectEmpty: {
-        marginTop: theme.spacing(2),
-      },
+    maxWidth: 345
+  },
+  "& .MuiTextField-root": {
+    margin: theme.spacing(1),
+    width: 350
+  },
+  media: {
+    height: 0,
+    paddingTop: "56.25%" // 16:9
+  },
+  expand: {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest
+    })
+  },
+  expandOpen: {
+    transform: "rotate(180deg)"
+  },
+  avatar: {
+    backgroundColor: red[500]
+  },
+  button: {
+    margin: theme.spacing(1)
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2)
   }
 }));
 
-export default function FormPropsTextFields() {
-
+export default function RecipeReviewCard() {
   const classes = useStyles();
+  const [expanded, setExpanded] = React.useState(false);
   const [state, setState] = React.useState({
-    age: '',
-    name: 'hai',
+    age: "",
+    name: "hai"
   });
 
   const inputLabel = React.useRef(null);
@@ -47,67 +68,82 @@ export default function FormPropsTextFields() {
   const handleChange = name => event => {
     setState({
       ...state,
-      [name]: event.target.value,
+      [name]: event.target.value
     });
   };
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
   return (
-    <div className="user-form">
-      <form
-        className={classes.root + " one-column"}
+    <ThemeProvider theme={theme}>
+<div className="user-form one-column">
+ <form
+        className={classes.root}
         noValidate
         autoComplete="off"
       >
-        <ThemeProvider theme={theme}>
-          <h1>CREATE INFO</h1>
- 
-          <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel ref={inputLabel} htmlFor="outlined-age-native-simple">
-          Categorie
-        </InputLabel>
-        <Select
-          native
-          
-          value={state.age}
-          onChange={handleChange('age')}
-          labelWidth={labelWidth}
-          inputProps={{
-            name: 'age',
-            id: 'outlined-age-native-simple',
-          }}
-        >
-          <option value="" />   
-          <option value={"Social"}>Social</option>
-          <option value={"Caring"}>Caring</option>
-          <option value={"Nearby"}>Nearby</option>
-          <option value={"Admin Notices"}>Admin Notices</option>
-          <option value={"General"}>General</option>
-        </Select>
-      </FormControl>
-      <ImageInfo />
-          <TextField id="outlined-basic" label="Text" variant="outlined" />
-          <div className="one-column">
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              size="large"
-              // endIcon={<Icon>send</Icon>}
-            >
-              submit
-            </Button>
-            <Button
-              variant="contained"
-              color="secondary"
-              className={classes.button}
-              size="small"
-              href="/signup"
-              //   endIcon={<Icon>send</Icon>}
-            >
-              sign up
-            </Button>
-          </div>
-        </ThemeProvider>
+      <Card raised="true" className={classes.root + " center"}>
+        <CardHeader
+          avatar={
+            <Avatar aria-label="recipe" className={classes.avatar}>
+              A
+            </Avatar>
+          }
+          action={
+            <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel required="true" ref={inputLabel} htmlFor="outlined-age-native-simple">
+                Categorie
+              </InputLabel>
+              <Select
+                native
+                value={state.age}
+                onChange={handleChange("age")}
+                labelWidth={labelWidth}
+                inputProps={{
+                  name: "age",
+                  id: "outlined-age-native-simple"
+                }}
+              >
+                <option value="" />
+                <option value={"Social"}>Social</option>
+                <option value={"Caring"}>Caring</option>
+                <option value={"Nearby"}>Nearby</option>
+                <option value={"Admin Notices"}>Admin Notices</option>
+                <option value={"General"}>General</option>
+              </Select>
+            </FormControl>
+          }
+        //   title="CREATE INFO"
+        //   subheader="September 14, 2016"
+        />
+        <CardContent>
+          <ImageInfo />
+        </CardContent>
+        <CardContent>
+          <TextField
+            id="outlined-multiline-static"
+            label="informations"
+            multiline
+            rows="4"
+            // defaultValue="Default Value"
+            variant="outlined"
+            fullWidth='true'
+          />
+        </CardContent>
+        <Button
+        variant="contained"
+        color="primary"
+        className={classes.button}
+        size="large"
+        // endIcon={<Icon>send</Icon>}
+      >
+        submit
+      </Button>
+      </Card>
+   
       </form>
-    </div>
+      </div>
+    </ThemeProvider>
   );
 }

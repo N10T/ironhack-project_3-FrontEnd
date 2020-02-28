@@ -31,8 +31,8 @@ export default function FormPropsTextFields() {
         <ThemeProvider theme={theme}>
           <h1>SIGN IN</h1>
  
-          <TextField id="outlined-basic" label="E-mail" variant="outlined" />
-          <TextField id="outlined-basic" label="Password" variant="outlined" />
+          <TextField required="true" id="outlined-basic" label="E-mail" variant="outlined" />
+          <TextField required="true" id="outlined-basic" label="Password" variant="outlined" />
           <div className="one-column">
             <Button
               variant="contained"

@@ -6,8 +6,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
 import People from '@material-ui/icons/EmojiPeople';
 import CategoryIcon from '@material-ui/icons/Class';
 import SwapHoriz from '@material-ui/icons/SwapHoriz';

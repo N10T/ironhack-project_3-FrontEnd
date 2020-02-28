@@ -34,7 +34,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Co-coon
           </Typography>
-<LogOut />
+{/* <LogOut /> */}
         </Toolbar>
       </AppBar>
       </ThemeProvider>

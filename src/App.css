@@ -106,3 +106,24 @@ border: 1px solid blue
 .makeStyles-root-113{
   width: 95vw;
 }
+
+#main-page{
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.discover{
+  margin-top: 20vh;
+}
+.discover>iframe{
+  margin: 0 10px;
+}
+
+#main-page #main-logo{
+  margin-top: 20vh;
+}
+
+#main-page .buttons{
+  /* padding-top: 40vh; */
+}

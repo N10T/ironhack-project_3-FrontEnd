@@ -71,9 +71,6 @@ export default function RecipeReviewCard() {
       [name]: event.target.value
     });
   };
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
 
   return (
     <ThemeProvider theme={theme}>

@@ -5,7 +5,7 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+// import AccountCircle from '@material-ui/icons/AccountCircle';
 import ApartmentIcon from '@material-ui/icons/Apartment';
 import MessageBadge from './Badge/MessageBadge';
 
@@ -28,7 +28,7 @@ export default function LabelBottomNavigation() {
   return (
     
     <BottomNavigation id="footer" value={value} onChange={handleChange} className={classes.root}>
-      <BottomNavigationAction label="" value="home" icon={<HomeIcon />} />
+      <BottomNavigationAction href="/" label="" value="home" icon={<HomeIcon />} />
       <BottomNavigationAction label="" value="infos" icon={<InfoIcon />} />
       <BottomNavigationAction href="/building/create-information" label="" value="New post" icon={<AddCircleIcon />} />
       <BottomNavigationAction label="" value="Messages" icon={<MessageBadge />} />

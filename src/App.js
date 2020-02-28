@@ -3,7 +3,8 @@ import { Route, Switch } from "react-router-dom";
 import React from "react";
 
 // pages components
-import home from "./views/home";
+import home from "./views/Home";
+import Discover from "./views/Discover";
 import FormBuilding from "./components/Forms/FormBuilding";
 import EditBuilding from "./components/Forms/EditBuilding"
 import FormKey from "./components/Forms/FormKey";
@@ -25,6 +26,7 @@ function App() {
       {/* <SearchBar /> */}
       <Switch>
         <Route exact path="/" component={home} />
+        <Route exact path="/discover" component={Discover} />
         <Route exact path="/admin/building" component={FormBuilding} />
         <Route exact path="/admin/building/:id" component={EditBuilding} />
         <Route exact path="/admin/key" component={FormKey} />

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import TextField from "@material-ui/core/TextField";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import theme from "../palette/palette";
 import AvatarUser from "../Upload/AvatarUser";
@@ -28,7 +28,6 @@ export default function FormPropsTextFields() {
         noValidate
         autoComplete="off"
       >
-        <ThemeProvider theme={theme}>
           <h1>SIGN IN</h1>
  
           <TextField required="true" id="outlined-basic" label="E-mail" variant="outlined" />
@@ -54,7 +53,6 @@ export default function FormPropsTextFields() {
               sign up
             </Button>
           </div>
-        </ThemeProvider>
       </form>
     </div>
   );

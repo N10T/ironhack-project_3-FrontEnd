@@ -10,15 +10,21 @@ font-family: 'Roboto Condensed', ; */
   font-family: Roboto;
 }
 header, #footer {
-  z-index: 5;
+  z-index: 15;
 }
 
-header {
+header{
   /* margin-bottom: 1vh; */
 }
 .protect-header {
 height: 55px;
 }
+/* 
+@media (max-width: 423px){
+  .protect-header {
+    height:55px;
+    }
+} */
 
 h6.MuiTypography-root.makeStyles-title-3.MuiTypography-h6{
   display: flex;
@@ -28,6 +34,10 @@ h6.MuiTypography-root.makeStyles-title-3.MuiTypography-h6{
   position: fixed;
   bottom: 0;
   margin-top: 1vh;
+}
+
+#search-bar{
+  z-index: 0;
 }
 
 .one-column {
@@ -96,6 +106,17 @@ border: 1px solid blue
   min-width: 100%;
   overflow: hidden;
   position: relative;
+  width: 100%;
+}
+
+.user-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.user-form>form{
   width: 100%;
 }
 

@@ -1,12 +1,16 @@
+//React
 import React from 'react';
+
+// Style
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-// import AccountCircle from '@material-ui/icons/AccountCircle';
 import ApartmentIcon from '@material-ui/icons/Apartment';
+
+// Component
 import MessageBadge from './Badge/MessageBadge';
 
 const useStyles = makeStyles({

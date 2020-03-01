@@ -1,4 +1,7 @@
+// React
 import React from "react";
+
+// Style
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 
 export default function IconUser({ clbk, avatar= ""}) {

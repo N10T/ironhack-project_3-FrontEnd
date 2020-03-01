@@ -1,6 +1,6 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import theme from './../palette/palette'
 import SendIcon from '@material-ui/icons/Send';
@@ -27,7 +27,6 @@ export default function FormPropsTextFields() {
         noValidate
         autoComplete="off"
       >
-        <ThemeProvider theme={theme}>
         <TextField
           disabled
           id="standard-basic"
@@ -53,7 +52,6 @@ export default function FormPropsTextFields() {
         >
           Send
         </Button>
-        </ThemeProvider>
       </form>
     </div>
   );

@@ -1,18 +1,20 @@
-import InputLabel from "@material-ui/core/InputLabel";
-import theme from "../palette/palette";
-import FormControl from "@material-ui/core/FormControl";
+// React
+import React from "react";
 
+// Style
+import { makeStyles } from "@material-ui/core/styles";
+import { red } from "@material-ui/core/colors";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import ImageInfo from "./../Upload/ImageInfo";
-import React from "react";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
-import { red } from "@material-ui/core/colors";
 import TextField from "@material-ui/core/TextField";
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -53,10 +55,10 @@ const useStyles = makeStyles(theme => ({
 
 export default function RecipeReviewCard() {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  // const [expanded, setExpanded] = React.useState(false);
   const [state, setState] = React.useState({
-    age: "",
-    name: "hai"
+    category: "General",
+    // name: "hai"
   });
 
   const inputLabel = React.useRef(null);
@@ -73,7 +75,6 @@ export default function RecipeReviewCard() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
 <div className="user-form">
  <form
         className={classes.root}
@@ -83,23 +84,23 @@ export default function RecipeReviewCard() {
       <Card raised="true" className={classes.root + " center"}>
         <CardHeader
           avatar={
-            <Avatar aria-label="recipe" className={classes.avatar}>
+            <Avatar aria-label="avatar" className={classes.avatar}>
               A
             </Avatar>
           }
           action={
             <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel required="true" ref={inputLabel} htmlFor="outlined-age-native-simple">
+              <InputLabel required="true" ref={inputLabel} htmlFor="outlined-category-native-simple">
                 Categorie
               </InputLabel>
               <Select
                 native
-                value={state.age}
-                onChange={handleChange("age")}
+                value={state.category}
+                onChange={handleChange("category")}
                 labelWidth={labelWidth}
                 inputProps={{
-                  name: "age",
-                  id: "outlined-age-native-simple"
+                  name: "category",
+                  id: "outlined-category-native-simple"
                 }}
               >
                 <option value="" />
@@ -141,6 +142,5 @@ export default function RecipeReviewCard() {
    
       </form>
       </div>
-    </ThemeProvider>
   );
 }

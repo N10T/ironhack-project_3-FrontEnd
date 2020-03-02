@@ -94,7 +94,7 @@ export default function FormInformation() {
     APIHandler.post('/informations', data);
     console.log("submit");
     console.log(data);
-    setTimeout(()=>data,window.location.href = "/user/building", 1000)
+    setTimeout(()=>window.location.href = "/user/building", 1000)
     
   }
 

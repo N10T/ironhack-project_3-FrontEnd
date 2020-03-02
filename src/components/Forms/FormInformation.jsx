@@ -1,3 +1,5 @@
+import APIHandler from './../../api/APIHandler';
+
 // React
 import React from "react";
 
@@ -53,7 +55,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function RecipeReviewCard() {
+export default function FormInformation() {
   const classes = useStyles();
   // const [expanded, setExpanded] = React.useState(false);
   const [state, setState] = React.useState({
@@ -74,12 +76,18 @@ export default function RecipeReviewCard() {
     });
   };
 
+  const handleSubmit = e => {}
+  const handleInputs = e => {}
+
   return (
 <div className="user-form">
  <form
         className={classes.root}
         noValidate
         autoComplete="off"
+        id="newInformation"
+        onSubmit={handleSubmit}
+        onChange={handleInputs}
       >
       <Card raised="true" className={classes.root + " center"}>
         <CardHeader
@@ -88,6 +96,7 @@ export default function RecipeReviewCard() {
               A
             </Avatar>
           }
+
           action={
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel required="true" ref={inputLabel} htmlFor="outlined-category-native-simple">
@@ -136,7 +145,7 @@ export default function RecipeReviewCard() {
         size="large"
         // endIcon={<Icon>send</Icon>}
       >
-        submit
+      submit
       </Button>
       </Card>
    

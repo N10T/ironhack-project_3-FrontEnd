@@ -17,7 +17,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 //Moment - Dealing with time
-import Moment from "react-moment";
 import * as dayjs from "dayjs";
 
 const useStyles = makeStyles(theme => ({

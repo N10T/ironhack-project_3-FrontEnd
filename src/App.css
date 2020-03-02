@@ -189,10 +189,16 @@ border: 1px solid blue
   flex-grow : 1;
 }
 .card>div{
-  margin: 10px 0;
+  margin: 5px 0;
   width: 95vw;
-
 }
+.infocards >div:first-child{
+  margin-top: 10px;
+}
+.infocards >div:last-child{
+  margin-bottom: 70px;
+}
+
 .makeStyles-root-113{
   width: 95vw;
 }

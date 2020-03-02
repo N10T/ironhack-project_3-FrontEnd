@@ -91,10 +91,10 @@ export default function FormInformation() {
     data.append("multimediaContent", avatar);
     // data.append("userOwner", "Andy");
     
-    APIHandler.post('/informations', data);
+    APIHandler.post('/informations', setTimeout(()=>data,window.location.href = "/user/building", 500)) ;
     console.log("submit");
     console.log(data);
-    window.location.href = "/user/building"
+    
   }
 
   const handleInputs = e => {
@@ -105,7 +105,6 @@ export default function FormInformation() {
     
     // formValues.category = state.category
     // console.log(formValues);
-    const datenow = Date.now()
   }
 
   const handleImage = e => {

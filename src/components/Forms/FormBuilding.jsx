@@ -23,8 +23,8 @@ const FormBuilding = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("submit");
-    console.log(formValues);
+    console.log("vvvvvvvvvv - submited - vvvvvvvvvv");
+    console.table(formValues)
     APIHandler.post("/buildings", formValues);
   };
 
@@ -32,7 +32,6 @@ const FormBuilding = props => {
     const value = e.target.value;
     const name = e.target.name;
     setFormValues({ ...formValues, [name]: value});
-    console.log(formValues);
   };
 
   return (

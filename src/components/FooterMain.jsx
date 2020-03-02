@@ -33,7 +33,7 @@ export default function LabelBottomNavigation() {
     
     <BottomNavigation id="footer" value={value} onChange={handleChange} className={classes.root}>
       <BottomNavigationAction href="/" label="" value="home" icon={<HomeIcon />} />
-      <BottomNavigationAction label="" value="infos" icon={<InfoIcon />} />
+      <BottomNavigationAction href="/admin/building" label="" value="infos" icon={<InfoIcon />} />
       <BottomNavigationAction href="/building/create-information" label="" value="New post" icon={<AddCircleIcon />} />
       <BottomNavigationAction href="/user/messages" value="Messages" icon={<MessageBadge />} />
       {/* <BottomNavigationAction label="Profile" value="profile" icon={<AccountCircle />} /> */}

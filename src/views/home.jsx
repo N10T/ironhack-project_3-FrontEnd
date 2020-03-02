@@ -17,8 +17,8 @@ export default function Home() {
   const classes = useStyles();
 
   return (
-    <div id="home-main-page" className="center text-focus-in">
-      <div id="main-logo" className="flex vcenter">
+    <div id="home-main-page" className="center">
+      <div id="main-logo" className="flex vcenter text-focus-in">
         <img src="/logo/CocoonMainColor.png" alt="White Cocoon" />
         <div className="vcenter">
           <h1 className="main-color">co-coon</h1>
@@ -32,7 +32,7 @@ export default function Home() {
         variant="contained"
         color="primary"
         className={classes.button}
-        size="large"
+        size="small"
       >
         Discover
       </Button>

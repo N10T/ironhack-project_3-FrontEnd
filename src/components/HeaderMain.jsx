@@ -32,7 +32,7 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="fixed" color="primary">
         <Toolbar>
-          <Typography variant="h5" className={classes.title}>
+          <Typography variant="h4" className={classes.title + " vcenter"}>
             <img src="/logo/CocoonWhite.png" alt="White Cocoon" /> 
             co-coon
           </Typography>

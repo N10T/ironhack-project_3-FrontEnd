@@ -1,7 +1,6 @@
-import APIHandler from './../../api/APIHandler';
-
 // React
-import React from "react";
+import React, {useState} from "react";
+import APIHandler from './../../api/APIHandler';
 
 // Style
 import { makeStyles } from "@material-ui/core/styles";
@@ -58,26 +57,62 @@ const useStyles = makeStyles(theme => ({
 export default function FormInformation() {
   const classes = useStyles();
   // const [expanded, setExpanded] = React.useState(false);
-  const [state, setState] = React.useState({
-    category: "General",
-    // name: "hai"
-  });
+  // const [state, setState] = React.useState({
+  //   category: "General",
+  //   // name: ""
+  // });
 
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
+  
+  // const handleChange = name => event => {
+  //   setState({
+  //     ...state,
+  //     [name]: event.target.value
+  //   });
+  // };
 
-  const handleChange = name => event => {
-    setState({
-      ...state,
-      [name]: event.target.value
-    });
+  
+  const [formValues, setFormValues] = useState({});
+  const [avatar, setAvatar] = useState("");
+  const [tmpAvatar, setTmpAvatar] = useState("");
+
+
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const data = new FormData();
+
+    data.append("category", formValues.category);
+    data.append("description", formValues.description);
+    data.append("multimediaContent", avatar);
+
+    console.log("submit");
+
+    console.log(data);
+
+    APIHandler.post('/informations', data);
+  }
+
+  const handleInputs = e => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setFormValues({ ...formValues, [name]: value});
+    // formValues.category = state.category
+    console.log(formValues);
+  }
+
+  const handleImage = e => {
+    setAvatar(e.target.files[0]);
+    const tmpUrl =URL.createObjectURL(e.target.files[0]);
+    setTmpAvatar(tmpUrl);
   };
 
-  const handleSubmit = e => {}
-  const handleInputs = e => {}
+  // For geting the user information is necesary to use a useEffect to get it from the db.
 
   return (
 <div className="user-form">
@@ -104,20 +139,21 @@ export default function FormInformation() {
               </InputLabel>
               <Select
                 native
-                value={state.category}
-                onChange={handleChange("category")}
+                value={formValues.category}
+                // onChange={handleChange()}
                 labelWidth={labelWidth}
                 inputProps={{
                   name: "category",
                   id: "outlined-category-native-simple"
                 }}
+                name="category"
               >
                 <option value="" />
                 <option value={"Social"}>Social</option>
                 <option value={"Caring"}>Caring</option>
                 <option value={"Nearby"}>Nearby</option>
                 <option value={"Admin Notices"}>Admin Notices</option>
-                <option value={"General"}>General</option>
+                <option value={"General"} selected>General</option>
               </Select>
             </FormControl>
           }
@@ -125,7 +161,7 @@ export default function FormInformation() {
         //   subheader="September 14, 2016"
         />
         <CardContent>
-          <ImageInfo />
+          <ImageInfo tmpAvatar={tmpAvatar} clbk={handleImage} />
         </CardContent>
         <CardContent>
           <TextField
@@ -136,9 +172,11 @@ export default function FormInformation() {
             // defaultValue="Default Value"
             variant="outlined"
             fullWidth='true'
+            name="textContent"
           />
         </CardContent>
         <Button
+        type="submit"
         variant="contained"
         color="primary"
         className={classes.button}
@@ -149,7 +187,7 @@ export default function FormInformation() {
       </Button>
       </Card>
    
-      </form>
-      </div>
+  </form>
+  </div>
   );
 }

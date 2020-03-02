@@ -192,6 +192,10 @@ border: 1px solid blue
   margin: 5px 0;
   width: 95vw;
 }
+
+.user-form .MuiCardContent-root,.user-form .MuiCardHeader-root{
+  width: 95%;
+}
 .infocards >div:first-child{
   margin-top: 10px;
 }
@@ -225,6 +229,12 @@ border: 1px solid blue
 }
 .makeStyles-root-77{
   align-items: stretch;
+}
+
+#addIcon{
+  position: fixed;
+  bottom:80px;
+  right: 30px;
 }
 
 @-webkit-keyframes text-focus-in {

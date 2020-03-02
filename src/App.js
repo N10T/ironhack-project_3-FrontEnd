@@ -11,6 +11,7 @@ import MyBuilding from "./views/Buildings";
 import Messages from "./views/Messages";
 import FormBuilding from "./components/Forms/FormBuilding";
 import EditBuilding from "./components/Forms/EditBuilding"
+import NewChat from "./components/Forms/NewChat"
 import FormKey from "./components/Forms/FormKey";
 import FormInformation from "./components/Forms/FormInformation";
 import SignUp from "./components/Forms/SignUp";
@@ -41,6 +42,7 @@ function App() {
         <Route exact path="/building/create-information" component={FormInformation} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/user/create-a-chat" component={NewChat} />
       </Switch>
       <FooterMain />
     </ThemeProvider>

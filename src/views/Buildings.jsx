@@ -15,7 +15,7 @@ export default function Buildings() {
   useEffect(() => {
     APIHandler.get("/informations")
       .then(DBres => {
-        setInfos(DBres.data);
+        setInfos([...DBres.data].sort((a,b)=> a.publicationDate-b.publicationDate));
         setInfosFiltered(DBres.data);
       })
       .catch(err => console.error(err));
@@ -27,18 +27,17 @@ export default function Buildings() {
         e.target.value ? info.textContent.toLowerCase().includes(e.target.value.toLowerCase()) : arr
       )
     );
-    console.log(e.target.value);
 // console.log(window.location.pathname === "/user/building");
-
   };
+
+  const infoMapper = arr => arr.map((info, index) => <InfoCard info={info} key={index} /> )
 
   return (
     <>
       <SearchBar clbk={searchHandler} />
       <div className="infocards text-focus-in">
-        {infos ? (
-          infosFiltered.map((info, index) => <InfoCard info={info} key={index} />)
-        ) : (
+        {infos ? infoMapper(infosFiltered).length ? infoMapper(infosFiltered) : <p className="flex center">No cards</p>
+         : (
           <p>Loading</p>
         )}
       </div>

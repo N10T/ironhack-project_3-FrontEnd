@@ -7,23 +7,27 @@ import Button from "@material-ui/core/Button";
 // Style
 import { makeStyles } from "@material-ui/core/styles";
 
-
 const useStyles = makeStyles(theme => ({
-    button: {
-      margin: theme.spacing(1),
-    },
-  }));
+  button: {
+    margin: theme.spacing(1)
+  }
+}));
 
 export default function Home() {
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return (
-        <div id="main-page" className="one-column center">
+  return (
+    <div id="home-main-page" className="center text-focus-in">
+      <div id="main-logo" className="flex vcenter">
+        <img src="/logo/CocoonMainColor.png" alt="White Cocoon" />
+        <div className="vcenter">
+          <h1 className="main-color">co-coon</h1>
+          <p>be aware to next door</p>
+        </div>
+      </div>
 
-<div id="main-logo"><h1>LOGO HERE</h1></div>
-
-  <div className="buttons">
-        <Button
+      <div className="buttons flex">
+      <Button
         href="/discover"
         variant="contained"
         color="primary"
@@ -32,7 +36,7 @@ export default function Home() {
       >
         Discover
       </Button>
-        <Button
+      <Button
         href="/signin"
         variant="contained"
         color="secondary"
@@ -41,8 +45,7 @@ export default function Home() {
         // endIcon={<Icon>send</Icon>}
       >
         sign in
-      </Button>
-      </div>
-        </div>
-    )
+      </Button></div>
+    </div>
+  );
 }

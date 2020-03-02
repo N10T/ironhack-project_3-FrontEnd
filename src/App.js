@@ -1,6 +1,8 @@
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
+import { ThemeProvider } from "@material-ui/core/styles";
 import React from "react";
+import theme from "./components/palette/palette";
 
 // pages components
 import Home from "./views/Home";
@@ -22,7 +24,8 @@ import FooterMain from "./components/FooterMain";
 
 function App() {
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
+
       <HeaderMain />
       <div className="protect-header"></div>
       {/* <SearchBar /> */}
@@ -38,7 +41,8 @@ function App() {
         <Route exact path="/signin" component={SignIn} />
       </Switch>
       <FooterMain />
-    </React.Fragment>
+    </ThemeProvider>
+
   );
 }
 

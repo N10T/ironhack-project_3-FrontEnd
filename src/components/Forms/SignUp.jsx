@@ -1,8 +1,13 @@
+
+// React
 import React, { useContext, useState } from "react";
+
+// Style
 import TextField from "@material-ui/core/TextField";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import theme from "../palette/palette";
+
+// Component
 import AvatarUser from "../Upload/AvatarUser";
 
 const useStyles = makeStyles(theme => ({
@@ -46,7 +51,6 @@ export default function FormPropsTextFields() {
         noValidate
         autoComplete="off"
       >
-        <ThemeProvider theme={theme}>
           <h1>SIGN UP</h1>
           <AvatarUser
           //   avatar={newAvatarTmp || currentUser.avatar}
@@ -82,7 +86,6 @@ export default function FormPropsTextFields() {
               sign in
             </Button>
           </div>
-        </ThemeProvider>
       </form>
     </div>
   );

@@ -1,7 +1,11 @@
+// React
 import React from "react";
+
+// Component
 import Button from "@material-ui/core/Button";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
-import theme from "../components/palette/palette";
+
+// Style
+import { makeStyles } from "@material-ui/core/styles";
 
 
 const useStyles = makeStyles(theme => ({
@@ -18,7 +22,6 @@ export default function Home() {
 
 <div id="main-logo"><h1>LOGO HERE</h1></div>
 
-<ThemeProvider theme={theme}>
   <div className="buttons">
         <Button
         href="/discover"
@@ -40,7 +43,6 @@ export default function Home() {
         sign in
       </Button>
       </div>
-      </ThemeProvider>
         </div>
     )
 }

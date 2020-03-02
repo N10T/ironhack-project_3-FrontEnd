@@ -91,9 +91,10 @@ export default function FormInformation() {
     data.append("multimediaContent", avatar);
     // data.append("userOwner", "Andy");
     
-    APIHandler.post('/informations', setTimeout(()=>data,window.location.href = "/user/building", 500)) ;
+    APIHandler.post('/informations', data);
     console.log("submit");
     console.log(data);
+    setTimeout(()=>data,window.location.href = "/user/building", 1000)
     
   }
 
@@ -147,6 +148,7 @@ export default function FormInformation() {
                   name: "category",
                   id: "outlined-category-native-simple"
                 }}
+                defaultValue="General"
                 name="category"
               >
                 <option value="" />

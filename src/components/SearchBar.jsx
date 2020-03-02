@@ -61,7 +61,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SearchAppBar() {
+export default function SearchAppBar({clbk}) {
   const classes = useStyles();
 
   return (
@@ -75,6 +75,7 @@ export default function SearchAppBar() {
             </div>
             <InputBase
               placeholder="Search…"
+              onChange={e => clbk(e)}
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,

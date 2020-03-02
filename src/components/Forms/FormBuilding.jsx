@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
+import APIHandler from './../../api/APIHandler';
 
 // styles
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import APIHandler from './../../api/APIHandler'
+
 
 const FormBuilding = props => {
 

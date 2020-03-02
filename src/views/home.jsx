@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
-import theme from "./../components/palette/palette";
+import theme from "../components/palette/palette";
 
 
 const useStyles = makeStyles(theme => ({

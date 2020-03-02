@@ -1,11 +1,14 @@
+import React from "react";
+import APIHandler from './../../api/APIHandler';
+
+
+// styles
 import InputLabel from "@material-ui/core/InputLabel";
 import theme from "../palette/palette";
 import FormControl from "@material-ui/core/FormControl";
-
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import ImageInfo from "./../Upload/ImageInfo";
-import React from "react";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -51,7 +54,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function RecipeReviewCard() {
+export default function FormInformation() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [state, setState] = React.useState({
@@ -72,6 +75,9 @@ export default function RecipeReviewCard() {
     });
   };
 
+  const handleSubmit = e => {}
+  const handleInputs = e => {}
+
   return (
     <ThemeProvider theme={theme}>
 <div className="user-form">
@@ -79,18 +85,32 @@ export default function RecipeReviewCard() {
         className={classes.root}
         noValidate
         autoComplete="off"
+        id="newInformation"
+        onSubmit={handleSubmit}
+        onChange={handleInputs}
       >
       <Card raised="true" className={classes.root + " center"}>
         <CardHeader
           avatar={
-            <Avatar aria-label="recipe" className={classes.avatar}>
-              A
+            <Avatar
+            aria-label="recipe"
+            className={classes.avatar}
+            >
+            A
             </Avatar>
           }
+
           action={
-            <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel required="true" ref={inputLabel} htmlFor="outlined-age-native-simple">
-                Categorie
+            <FormControl
+            variant="outlined"
+            className={classes.formControl}
+            >
+              <InputLabel
+              required="true"
+              ref={inputLabel}
+              htmlFor="outlined-age-native-simple"
+              >
+              Categorie
               </InputLabel>
               <Select
                 native
@@ -135,7 +155,7 @@ export default function RecipeReviewCard() {
         size="large"
         // endIcon={<Icon>send</Icon>}
       >
-        submit
+      submit
       </Button>
       </Card>
    

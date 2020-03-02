@@ -20,13 +20,13 @@ export default function Discover() {
 
     return (
         <div className="one-column center discover">
-            <iframe height="315" src="https://www.youtube.com/embed/Xaj06KdTwLA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="video" height="315" src="https://www.youtube.com/embed/Xaj06KdTwLA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <Button
         href="/signin"
         variant="contained"
         color="primary"
         className={classes.button}
-        size="small"
+        size="large"
         // endIcon={<Icon>send</Icon>}
         >
         sign in

@@ -1,27 +1,28 @@
 // React
-import React from 'react'
+import React from "react";
 
 // Style
 
 // Component
-import InfoCard from './../components/InfoCard'
-import SearchBar from './../components/SearchBar'
+import InfoCard from "./../components/InfoCard";
+import SearchBar from "./../components/SearchBar";
 
 export default function Buildings() {
-    
-    return (
-        <div>
-            <SearchBar/>
-            <InfoCard />
-            <InfoCard />
-            <InfoCard />
-            <InfoCard />
-            <InfoCard />
-            <InfoCard />
-            <InfoCard />
-            <InfoCard />
-            <InfoCard />
-            <InfoCard />
-        </div>
-    )
+  return (
+    <>
+      <SearchBar />
+      <div className="infocards text-focus-in">
+        <InfoCard />
+        <InfoCard />
+        <InfoCard />
+        <InfoCard />
+        <InfoCard />
+        <InfoCard />
+        <InfoCard />
+        <InfoCard />
+        <InfoCard />
+        <InfoCard />
+      </div>
+    </>
+  );
 }

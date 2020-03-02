@@ -1,7 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Spartan&display=swap');
 
 /* font-family: 'Roboto', ;
-font-family: 'Roboto Condensed', ; */
+font-family: 'Roboto Condensed', ; 
+      primary: {
+        light: '#89d4a9',
+        main: '#59a27a',
+        dark: '#29734e',
+        contrastText: '#fff',
+      },
+      secondary: {
+        light: '#FFDCB3',
+        main: '#E5B67E',
+        dark: '#BB8749',
+        contrastText: '#000',
+*/
 
 * {
   margin: 0;
@@ -9,12 +21,41 @@ font-family: 'Roboto Condensed', ; */
   box-sizing: border-box;
   font-family: Roboto;
 }
+h1{
+  font-size: 3em;
+}
+
+.text-focus-in{
+    -webkit-animation: text-focus-in 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) 1s both;
+            animation: text-focus-in 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) 1s both;
+}
+.space-between{
+  justify-content: space-between;
+}
+
+#messages .MuiCardContent-root{
+  padding: 3px 15px;
+}
+
+#messages .MuiTypography-body2{
+  font-style: italic;
+}
+
+/* #messages .makeStyles-root-77{
+  TO KEEP THE SEARCH BAR
+  position: fixed;
+  width: 100%;
+} */
 header, #footer {
   z-index: 15;
 }
 
-header{
-  /* margin-bottom: 1vh; */
+header img{
+  max-height: 30px;
+}
+
+#home-main-page img{
+  max-height: 90px;
 }
 .protect-header {
 height: 55px;
@@ -26,10 +67,11 @@ height: 55px;
     }
 } */
 
-h6.MuiTypography-root.makeStyles-title-3.MuiTypography-h6{
+h5.MuiTypography-root.makeStyles-title-3.MuiTypography-h5{
   display: flex;
   justify-content: center;
 }
+
 #footer {
   position: fixed;
   bottom: 0;
@@ -59,6 +101,14 @@ h6.MuiTypography-root.makeStyles-title-3.MuiTypography-h6{
 
 .flex {
   display: flex
+}
+
+.vcenter{
+align-items: center;
+}
+
+.main-color{
+  color: #59a27a;
 }
 
 .image-preview-info{
@@ -133,7 +183,7 @@ border: 1px solid blue
   width: 95vw;
 }
 
-#main-page{
+#home-main-page{
   height: 80vh;
   display: flex;
   align-items: center;
@@ -146,10 +196,35 @@ border: 1px solid blue
   margin: 0 10px;
 }
 
-#main-page #main-logo{
+#home-main-page #main-logo{
   margin-top: 20vh;
 }
 
 .makeStyles-root-77{
   align-items: stretch;
+}
+
+@-webkit-keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
 }

@@ -10,8 +10,8 @@ export default function IconUser({ clbk, tmpAvatar= ""}) {
   console.log(tmpAvatar)
 
   return (
-    <div className={"is-clickable icon-image"} title="change image">
-      {tmpAvatar && <img src={tmpAvatar} alt="info image" />}
+    <div className={"is-clickable icon-image"} title="change">
+      {tmpAvatar && <img src={tmpAvatar} alt="info" />}
       <input
         ref={fileInput}
         type="file"

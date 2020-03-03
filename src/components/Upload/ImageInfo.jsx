@@ -1,13 +1,15 @@
+// React
 import React from "react";
+
+// Style
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 
-export default function IconUser({ clbk, tmpAvatar= ""}) {
+export default function ImageInfo({ clbk, tmpAvatar= ""}) {
   const fileInput = React.createRef();
 
   const handleClick = () => {
     fileInput.current.click();
   };
-  console.log(tmpAvatar)
 
   return (
     <div className={"is-clickable icon-image"} title="change">

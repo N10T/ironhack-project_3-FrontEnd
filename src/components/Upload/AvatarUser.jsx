@@ -4,7 +4,7 @@ import React from "react";
 // Style
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 
-export default function IconUser({ clbk, avatar= ""}) {
+export default function IconUser({ clbk, tmpAvatar= ""}) {
   const fileInput = React.createRef();
 
   const handleClick = () => {
@@ -13,12 +13,13 @@ export default function IconUser({ clbk, avatar= ""}) {
 
   return (
     <div className={"is-clickable icon-avatar"} title="change avatar">
-      {avatar && <img src={avatar} alt="user avatar" />}
+      {tmpAvatar && <img src={tmpAvatar} alt="user avatar" />}
       <input
         ref={fileInput}
         type="file"
         className="is-hidden"
         onChange={clbk}
+        name="avatar"
       />
       <AddAPhotoIcon
         onClick={handleClick}

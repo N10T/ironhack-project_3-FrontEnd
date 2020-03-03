@@ -78,6 +78,10 @@ height: 55px;
     height:55px;
     }
 } */
+#Admin-icon{
+  position: fixed;
+  top: 18px
+}
 
 h4.MuiTypography-root.makeStyles-title-3.MuiTypography-h4{
   display: flex;

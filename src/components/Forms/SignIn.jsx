@@ -20,6 +20,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const api = new APIHandler();
+
 export default function Signin({history}) {
 
   const classes = useStyles();
@@ -34,7 +36,7 @@ export default function Signin({history}) {
   const handleSubmit = e => {
     e.preventDefault();
 
-    APIHandler.post('/auth/signin', formValues).then(res => {
+    api.post('/auth/signin', formValues).then(res => {
       console.log(res.data);
       history.push("/user/building")
     }).catch(err => {

@@ -16,6 +16,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import FolderIcon from '@material-ui/icons/Folder';
 import DeleteIcon from '@material-ui/icons/Delete';
+const api = new APIHandler();
 
 const FormBuilding = props => {
 
@@ -49,7 +50,7 @@ const FormBuilding = props => {
   const [formValues, setFormValues] = useState();
 
   useEffect( () => {
-      APIHandler.get("/buildings/" + props.match.params.id)
+    api.get("/buildings/" + props.match.params.id)
         .then(res => {setFormValues(res.data)})
   }, [])
 
@@ -58,7 +59,7 @@ const FormBuilding = props => {
     e.preventDefault();
     console.log("submit");
     console.log(formValues);
-    APIHandler.patch("/buildings/" + props.match.params.id, formValues);
+    api.patch("/buildings/" + props.match.params.id, formValues);
   };
 
   const handleInputs = e => {

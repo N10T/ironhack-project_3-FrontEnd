@@ -11,6 +11,8 @@ import Button from "@material-ui/core/Button";
 // Component
 import AvatarUser from "../Upload/AvatarUser";
 
+const api = new APIHandler();
+
 const useStyles = makeStyles(theme => ({
   root: {
     "& .MuiTextField-root": {
@@ -53,7 +55,7 @@ export default function SignUp() {
     data.append("password", formValues.password || "");
     data.append("avatar", avatar);
     
-    APIHandler.post('/auth/signup', data).then(res => {
+    api.post('/auth/signup', data).then(res => {
       console.log(res.data)
     }).catch(err => {
       console.log(err.response)

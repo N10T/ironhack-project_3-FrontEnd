@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import APIHandler from "../api/APIHandler";
 import UserContext from "./UserContext";
 
+const api = new APIHandler();
+
 export const useAuth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -9,7 +11,7 @@ export const useAuth = () => {
   const { setCurrentUser, currentUser } = userContext;
 
   useEffect(() => {
-    APIHandler.get("/auth/is-loggedin")
+    api.get("/auth/is-loggedin")
       .then(res => {
         setIsLoggedIn(true);
         setIsLoading(false);

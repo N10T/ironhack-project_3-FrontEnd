@@ -2,18 +2,27 @@
 import React, { useState, useEffect } from "react";
 
 // Style
+import ReactLoading from "react-loading";
 
 // Component
 import InfoCard from "./../components/InfoCard";
 import SearchBar from "./../components/SearchBar";
 import APIHandler from "../api/APIHandler";
+import palette from "./../components/palette/palette"
+import {useAuth} from "./../auth/useAuth"
+
+const api = new APIHandler();
 
 export default function Buildings() {
+  const {currentUser, isLoggedIn, isLoading } = useAuth();
   const [infos, setInfos] = useState([]);
   const [infosFiltered, setInfosFiltered] = useState([]);
 
+    console.log(currentUser);
+    
+
   useEffect(() => {
-    APIHandler.get("/informations")
+    api.get("/informations")
       .then(DBres => {
         setInfos([...DBres.data].sort((a,b)=> a.publicationDate-b.publicationDate));
         setInfosFiltered(DBres.data);
@@ -36,9 +45,9 @@ export default function Buildings() {
     <>
       <SearchBar clbk={searchHandler} />
       <div className="infocards text-focus-in">
-        {infos ? infoMapper(infosFiltered).length ? infoMapper(infosFiltered) : <p className="flex center">No cards</p>
+        {infos ? infoMapper(infosFiltered).length ? infoMapper(infosFiltered) : <ReactLoading className="fixed" top="50vh" left="20vw" type="bubbles" color={palette.palette.primary.main} height={10} width="100vw" />
          : (
-          <p>Loading</p>
+          <ReactLoading position="fixed" top="50vh" left="20vw" type="bubbles" color={palette.palette.primary.main} height={10} width="100vw" />
         )}
       </div>
     </>

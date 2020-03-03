@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+const api = new APIHandler();
 
 const FormBuilding = props => {
 
@@ -25,7 +26,7 @@ const FormBuilding = props => {
     e.preventDefault();
     console.log("vvvvvvvvvv - submited - vvvvvvvvvv");
     console.table(formValues)
-    APIHandler.post("/buildings", formValues);
+    api.post("/buildings", formValues);
   };
 
   const handleInputs = e => {

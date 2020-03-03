@@ -9,6 +9,7 @@ import Home from "./views/home";
 import Discover from "./views/Discover";
 import MyBuilding from "./views/Buildings";
 import Messages from "./views/Messages";
+import AllBuildings from "./views/All-buildings";
 import FormBuilding from "./components/Forms/FormBuilding";
 import EditBuilding from "./components/Forms/EditBuilding";
 import NewChat from "./components/Forms/NewChat";
@@ -33,10 +34,10 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState({});
 
-   const UserContextValue = {
+  const UserContextValue = {
       currentUser,
       setCurrentUser
-    };
+  };
 
   return (
     <UserContext.Provider value={UserContextValue}>
@@ -49,14 +50,10 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/discover" component={Discover} />
             <Route exact path="/admin/building" component={FormBuilding} />
+            <Route exact path="/admin/buildings" component={AllBuildings} />
             {/* <Route exact path="/user/building" component={MyBuilding} /> */}
-            
-            <ProtectedRoute
-                exact
-                path="/user/building" 
-                component={MyBuilding}
-              />
-            
+            {/* Why to do a protectet route: */}
+            <ProtectedRoute exact path="/user/building" component={MyBuilding} />
             <Route exact path="/user/messages" component={Messages} />
             <Route exact path="/admin/building/:id" component={EditBuilding} />
             <Route exact path="/admin/key" component={FormKey} />

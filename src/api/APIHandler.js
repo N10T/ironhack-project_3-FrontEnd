@@ -3,7 +3,8 @@ import axios from "axios";
 class APIHandler {
   constructor(baseURL) {
     this.handler = axios.create({
-      baseURL: baseURL || process.env.REACT_APP_BACKEND_URL
+      baseURL: baseURL || process.env.REACT_APP_BACKEND_URL,
+      withCredentials: true
     })
   }
 

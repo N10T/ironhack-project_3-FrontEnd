@@ -24,25 +24,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function SignUp() {
-  //   const userContext = useContext(UserContext);
-  //   const { currentUser } = userContext;
-  //   const classes = useStyles();
-  //   const [newAvatar, setAvatar] = useState(
-  //     currentUser ? currentUser.avatar : ""
-  //   );
-
-  //   const [newAvatarTmp, setAvatarTmp] = useState("");
-
-  //   const handleAvatar = file => {
-  //     const reader = new FileReader();
-  //     reader.onloadend = () => {
-  //       // when the fileReader ends reading image  ...
-  //       const baseString = reader.result;
-  //       setAvatar(file);
-  //       setAvatarTmp(baseString); // set the tmp avatar as an image source before upload
-  //     };
-  //     reader.readAsDataURL(file); // read the file from the local disk
-  //   };
   const classes = useStyles();
 
   const [formValues, setFormValues] = useState({});
@@ -53,7 +34,6 @@ export default function SignUp() {
     const value = e.target.value;
     const name = e.target.name;
     setFormValues({ ...formValues, [name]: value});
-    console.log(formValues);
   };
 
   const handleImage = e => {
@@ -64,24 +44,20 @@ export default function SignUp() {
 
   const handleSubmit = e => {
     e.preventDefault();
-
+    console.log(formValues)
     const data = new FormData();
-
-    console.log("name", formValues.name)
-    data.append("name", formValues.name);
-    data.append("lastname", formValues.lastname);
-    data.append("email", formValues.email);
-    data.append("key", formValues.key);
-    data.append("password", formValues.password);
+    data.append("name", formValues.name || "");
+    data.append("lastname", formValues.lastname || "");
+    data.append("email", formValues.email || "");
+    data.append("key", formValues.key || "");
+    data.append("password", formValues.password || "");
     data.append("avatar", avatar);
     
-    APIHandler.post('/users', data).then(res => {
+    APIHandler.post('/auth/signup', data).then(res => {
       console.log(res.data)
     }).catch(err => {
       console.log(err.response)
-    })
-    
-  
+    })  
   }
 
   return (
@@ -93,10 +69,7 @@ export default function SignUp() {
         onSubmit={handleSubmit}
         onChange={handleInputs}
       >
-          {/* <h1>SIGN UP</h1> */}
           <AvatarUser
-          //   avatar={newAvatarTmp || currentUser.avatar}
-          //   clbk={e => handleAvatar(e.target.files[0])}
           tmpAvatar={tmpAvatar} clbk={handleImage} 
           />
           <TextField
@@ -114,6 +87,7 @@ export default function SignUp() {
           name="lastname"
           />
           <TextField
+          type="email"
           required="true"
           id="outlined-basic"
           label="E-mail"
@@ -127,6 +101,7 @@ export default function SignUp() {
           name="key"
           />
           <TextField
+          type="password"
           required="true"
           id="outlined-basic"
           label="Password"

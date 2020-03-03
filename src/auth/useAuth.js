@@ -9,7 +9,7 @@ export const useAuth = () => {
   const { setCurrentUser, currentUser } = userContext;
 
   useEffect(() => {
-    APIHandler.get("/is-loggedin")
+    APIHandler.get("/auth/is-loggedin")
       .then(res => {
         setIsLoggedIn(true);
         setIsLoading(false);

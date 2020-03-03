@@ -1,4 +1,8 @@
-import React from "react";
+// React
+import React, {useState} from "react";
+import APIHandler from './../../api/APIHandler';
+
+// Styles
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -16,9 +20,27 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function FormPropsTextFields() {
+export default function Signin({history}) {
 
   const classes = useStyles();
+
+  const [formValues, setFormValues] = useState({});
+
+  const handleInputs = e => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setFormValues({ ...formValues, [name]: value});
+  }
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    APIHandler.post('/auth/signin', formValues).then(res => {
+      console.log(res.data);
+      history.push("/user/building")
+    }).catch(err => {
+      console.log(err.response)
+    })
+  }
 
   return (
     <div className="user-form">
@@ -26,13 +48,29 @@ export default function FormPropsTextFields() {
         className={classes.root + " one-column"}
         noValidate
         autoComplete="off"
+        onSubmit={handleSubmit}
+        onChange={handleInputs}
       >
-          <h1>SIGN IN</h1>
- 
-          <TextField required="true" id="outlined-basic" label="E-mail" variant="outlined" />
-          <TextField required="true" id="outlined-basic" label="Password" variant="outlined" />
+          {/* <h1>SIGN IN</h1> */}
+          <TextField
+          required="true"
+          id="outlined-basic"
+          label="E-mail"
+          variant="outlined"
+          name="email"
+          defaultValue="ina@gmail.com"
+          />
+          <TextField 
+          required="true"
+          id="outlined-basic"
+          label="Password"
+          variant="outlined" 
+          name="password"
+          defaultValue="12345"
+          />
           <div className="one-column">
             <Button
+              type="submit"
               variant="contained"
               color="primary"
               className={classes.button}

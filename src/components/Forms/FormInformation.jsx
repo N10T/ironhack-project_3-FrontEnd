@@ -16,7 +16,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
 import TextField from "@material-ui/core/TextField";
 
-
 const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: 345
@@ -86,24 +85,27 @@ export default function FormInformation() {
     e.preventDefault();
 
     const data = new FormData();
-
+    data.append("publicationDate", Date.now());
     data.append("category", formValues.category);
-    data.append("description", formValues.description);
+    data.append("textContent", formValues.description);
     data.append("multimediaContent", avatar);
-
-    console.log("submit");
-
-    console.log(data);
-
+    // data.append("userOwner", "Andy");
+    
     APIHandler.post('/informations', data);
+    console.log("submit");
+    console.log(data);
+    setTimeout(()=>window.location.href = "/user/building", 1000)
+    
   }
 
   const handleInputs = e => {
     const value = e.target.value;
     const name = e.target.name;
+    
     setFormValues({ ...formValues, [name]: value});
+    
     // formValues.category = state.category
-    console.log(formValues);
+    // console.log(formValues);
   }
 
   const handleImage = e => {
@@ -146,6 +148,7 @@ export default function FormInformation() {
                   name: "category",
                   id: "outlined-category-native-simple"
                 }}
+                defaultValue="General"
                 name="category"
               >
                 <option value="" />
@@ -172,7 +175,7 @@ export default function FormInformation() {
             // defaultValue="Default Value"
             variant="outlined"
             fullWidth='true'
-            name="textContent"
+            name="description"
           />
         </CardContent>
         <Button

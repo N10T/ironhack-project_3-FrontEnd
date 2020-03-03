@@ -1,5 +1,5 @@
 //React
-import React from 'react'
+import React, { useState } from "react";
 
 //Style
 import { makeStyles } from '@material-ui/core/styles';
@@ -37,7 +37,7 @@ const classes = useStyles();
         <Typography variant="h6" component="h2">
           Contacts Name
         </Typography>
-        <Typography className={classes.title} color="Secondary" gutterBottom>
+        <Typography className={classes.title} color="secondary" gutterBottom>
           Date
         </Typography>
 

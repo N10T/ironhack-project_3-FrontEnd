@@ -13,7 +13,7 @@ export default function ImageInfo({ clbk, tmpAvatar= ""}) {
 
   return (
     <div className={"is-clickable icon-image"} title="change">
-      {tmpAvatar && <img src={tmpAvatar} alt="info" />}
+      {tmpAvatar && <img src={tmpAvatar} alt="info" id="preview" />}
       <input
         ref={fileInput}
         type="file"
@@ -22,6 +22,7 @@ export default function ImageInfo({ clbk, tmpAvatar= ""}) {
         name="avatar"
       />
       <AddAPhotoIcon
+      id="add-photo-logo"
         onClick={handleClick}
       />
     </div>

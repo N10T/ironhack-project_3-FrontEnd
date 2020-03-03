@@ -75,9 +75,12 @@ export default function SignUp() {
     data.append("password", formValues.password);
     data.append("avatar", avatar);
     
-    APIHandler.post('/users', data)
+    APIHandler.post('/users', data).then(res => {
+      console.log(res.data)
+    }).catch(err => {
+      console.log(err.response)
+    })
     
-    console.log("--------", data) 
   
   }
 

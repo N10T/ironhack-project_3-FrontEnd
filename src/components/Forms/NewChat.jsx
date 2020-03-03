@@ -16,6 +16,8 @@ import Avatar from "@material-ui/core/Avatar";
 import TextField from "@material-ui/core/TextField";
 import Icon from '@material-ui/icons/Send';
 
+const api = new APIHandler();
+
 const useStyles = makeStyles(theme => ({
     root: {
       maxWidth: 345
@@ -85,7 +87,7 @@ const useStyles = makeStyles(theme => ({
       formValues.from = "USER"
 
       
-      APIHandler.post('/message', formValues);
+      api.post('/message', formValues);
       console.log("submit");
       console.log(formValues);
       setTimeout(()=>window.location.href = "/user/messages", 1000)

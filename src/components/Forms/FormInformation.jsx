@@ -16,6 +16,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
 import TextField from "@material-ui/core/TextField";
 
+const api = new APIHandler();
+
 const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: 345
@@ -91,7 +93,7 @@ export default function FormInformation() {
     data.append("multimediaContent", avatar);
     // data.append("userOwner", "Andy");
     
-    APIHandler.post('/informations', data);
+    api.post('/informations', data);
     console.log("submit");
     console.log(data);
     setTimeout(()=>window.location.href = "/user/building", 1000)

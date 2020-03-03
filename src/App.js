@@ -5,7 +5,7 @@ import React from "react";
 import theme from "./components/palette/palette";
 
 // pages components
-import Home from "./views/home";
+import Home from "./views/Home";
 import Discover from "./views/Discover";
 import MyBuilding from "./views/Buildings";
 import Messages from "./views/Messages";

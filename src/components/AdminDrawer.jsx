@@ -68,7 +68,7 @@ export default function SwipeableTemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        <ListItem button component="a" >
+        <ListItem button component="a" href="/admin/buildings">
           <ListItemIcon>
             <SupervisedUserCircle />
           </ListItemIcon>

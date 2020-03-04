@@ -265,3 +265,8 @@ border: 1px solid blue
     opacity: 1;
   }
 }
+
+.makeStyles-root-104 .MuiSvgIcon-root {
+  position: absolute;
+  z-index: 10;
+}

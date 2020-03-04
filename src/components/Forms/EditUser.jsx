@@ -1,6 +1,5 @@
-
 // React
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import APIHandler from './../../api/APIHandler';
 
 // Style
@@ -25,12 +24,21 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignUp() {
+const EditUser = props => {
   const classes = useStyles();
 
   const [formValues, setFormValues] = useState({});
   const [avatar, setAvatar] = useState("");
   const [tmpAvatar, setTmpAvatar] = useState("");
+
+  useEffect( () => {
+      api.get("/users/" + props.match.params.id)
+      .then(res => {
+        setFormValues(res.data)
+        // setAvatar(res.data.avatar)
+        // setTmpAvatar(res.data.avatar)
+        console.table(res.data)})
+  }, [])
 
   const handleInputs = e => {
     const value = e.target.value;
@@ -46,23 +54,23 @@ export default function SignUp() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(formValues)
+    console.log(formValues);
     const data = new FormData();
     data.append("name", formValues.name || "");
     data.append("lastname", formValues.lastname || "");
     data.append("email", formValues.email || "");
-    data.append("key", formValues.key || "");
-    data.append("password", formValues.password || "");
+    // data.append("key", formValues.key || "");
+    // data.append("password", formValues.password || "");
     data.append("avatar", avatar);
-    console.log(data)
-    api.post('/auth/signup', data).then(res => {
+    console.log(data);
+    api.patch("/users/" + props.match.params.id, data).then(res => {
       console.log(res.data)
     }).catch(err => {
       console.log(err.response)
     })  
   }
-
-  return (
+  console.log(formValues, "this is form")
+  return ( formValues.name ?
     <div className="user-form">
       <form
         className={classes.root + " one-column"}
@@ -72,7 +80,7 @@ export default function SignUp() {
         onChange={handleInputs}
       >
           <AvatarUser
-          tmpAvatar={tmpAvatar} clbk={handleImage} 
+          tmpAvatar={tmpAvatar||formValues.avatar} clbk={handleImage} 
           />
           <TextField
             required="true"
@@ -80,6 +88,7 @@ export default function SignUp() {
             label="Name"
             variant="outlined"
             name="name"
+            defaultValue={formValues.name}
             />
           <TextField
           required="true"
@@ -87,6 +96,7 @@ export default function SignUp() {
           label="Lastname"
           variant="outlined"
           name="lastname"
+          defaultValue={formValues.lastname}
           />
           <TextField
           type="email"
@@ -95,13 +105,14 @@ export default function SignUp() {
           label="E-mail"
           variant="outlined"
           name="email"
+          defaultValue={formValues.email}
           />
-          <TextField
+          {/* <TextField
           id="outlined-basic"
           label="Your building key"
           variant="outlined"
           name="key"
-          />
+          /> */}
           <TextField
           type="password"
           required="true"
@@ -119,20 +130,12 @@ export default function SignUp() {
               size="large"
               // endIcon={<Icon>send</Icon>}
             >
-            sign up
-            </Button>
-            <Button
-              variant="contained"
-              color="secondary"
-              className={classes.button}
-              size="small"
-              href="/signin"
-              //   endIcon={<Icon>send</Icon>}
-            >
-              sign in
+            edit
             </Button>
           </div>
       </form>
-    </div>
+    </div>: <p>Loading ...</p>
   );
 }
+
+export default EditUser;

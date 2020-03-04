@@ -60,7 +60,6 @@ export default function Signin({history}) {
           label="E-mail"
           variant="outlined"
           name="email"
-          defaultValue="ina@gmail.com"
           />
           <TextField 
           required="true"
@@ -68,7 +67,6 @@ export default function Signin({history}) {
           label="Password"
           variant="outlined" 
           name="password"
-          defaultValue="12345"
           />
           <div className="one-column">
             <Button

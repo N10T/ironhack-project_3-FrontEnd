@@ -146,7 +146,7 @@ const FormBuilding = props => {
             size="small"
             defaultValue={formValues.adress.country}
             />
-            <TextField
+            {/* <TextField
             id="standard-basic"
             label="Users"
             size="small"
@@ -175,7 +175,7 @@ const FormBuilding = props => {
               )}
             </List>
           </div>
-        </Grid>
+        </Grid> */}
             <Button
             type="submit"
             variant="contained"

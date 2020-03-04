@@ -117,6 +117,21 @@ h4.MuiTypography-root.makeStyles-title-3.MuiTypography-h4{
   z-index: 10;
 }
 
+#alert-dialog-slide-title>h2{
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  /* width: 80vw; */
+}
+#alert-dialog-slide-title>h2>div{
+  height: 20vh;
+  width: 20vh;
+  margin-top: 20px;
+}
+
+.MuiDialogActions-root.MuiDialogActions-spacing.flex{
+  justify-content: space-around;
+}
 .one-column {
   display: grid;
   justify-items: center;

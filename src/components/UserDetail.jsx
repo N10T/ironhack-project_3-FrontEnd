@@ -101,7 +101,7 @@ export default function ControlledExpansionPanels({ data }) {
             </Typography>
             <DeleteIcon onClick={handleClickOpen} color="secondary" />
             <EditIcon
-              onClick={e => (window.location.href = `/admin/user/${data._id}`)}
+              onClick={e => (window.location.href = `/admin/edit_user/${data._id}`)}
               color="primary"
             />
             </div>
@@ -139,6 +139,7 @@ export default function ControlledExpansionPanels({ data }) {
         </ExpansionPanelDetails>
       </ExpansionPanel>
       <Dialog
+      fullWidth	= {true}
         open={open}
         TransitionComponent={Transition}
         keepMounted
@@ -146,14 +147,21 @@ export default function ControlledExpansionPanels({ data }) {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title">
+        <DialogTitle id="alert-dialog-slide-title" className="center flex">
           Delete {data.name} ?
+          <Avatar
+                src={data.avatar ? data.avatar : ""}
+                aria-label="recipe"
+                className={classes.avatar}
+              >
+                {data.name.substring(0, 1).toUpperCase()}
+              </Avatar>
         </DialogTitle>
-        <DialogActions>
+        <DialogActions className="flex">
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={deleteUser} color="primary">
+          <Button onClick={deleteUser} color="secondary">
             Delete
           </Button>
         </DialogActions>

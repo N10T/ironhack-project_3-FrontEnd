@@ -269,3 +269,8 @@ font-size:0.8em;
     opacity: 1;
   }
 }
+
+.makeStyles-root-104 .MuiSvgIcon-root {
+  position: absolute;
+  z-index: 10;
+}

@@ -18,7 +18,7 @@ import FolderIcon from '@material-ui/icons/Folder';
 import DeleteIcon from '@material-ui/icons/Delete';
 const api = new APIHandler();
 
-const FormBuilding = props => {
+const EditBuilding = props => {
 
   const useStyles = makeStyles(theme => ({
     root: {
@@ -34,24 +34,33 @@ const FormBuilding = props => {
     }
   }));
 
-  function generate(element) {
-    // return formValues.users.map(value =>
-    return [0,1,2,3,4,5].map(value =>
-      React.cloneElement(element, {
-        key: value,
-      }),
-    );
-  }
+  // function generate(element) {
+  //   // return formValues.users.map(value =>
+  //   return [0,1,2,3,4,5].map(value =>
+  //     React.cloneElement(element, {
+  //       key: value,
+  //     }),
+  //   );
+  // }
 
   const classes = useStyles();
-  const [dense, setDense] = React.useState(false);
-  const [secondary, setSecondary] = React.useState(false);
+  // const [dense, setDense] = React.useState(false);
+  // const [secondary, setSecondary] = React.useState(false);
 
   const [formValues, setFormValues] = useState();
 
   useEffect( () => {
     api.get("/buildings/" + props.match.params.id)
-        .then(res => {setFormValues(res.data)})
+        .then(res => {
+          setFormValues({
+            name: res.data.name,
+            number: res.data.adress.number,
+            street: res.data.adress.street,
+            postalcode: res.data.adress.postalcode,
+            city: res.data.adress.city,
+            country: res.data.adress.country
+          })
+        })
   }, [])
 
 
@@ -108,7 +117,7 @@ const FormBuilding = props => {
             type="number"
             name="number"
             size="small"
-            defaultValue={formValues.adress.number}
+            defaultValue={formValues.number}
             />
             <TextField
             id="outlined-basic"
@@ -117,7 +126,7 @@ const FormBuilding = props => {
             type="text"
             name="street"
             size="small"
-            defaultValue={formValues.adress.street}
+            defaultValue={formValues.street}
             />
             <TextField
             id="outlined-basic"
@@ -126,7 +135,7 @@ const FormBuilding = props => {
             type="text"
             name="postalcode"
             size="small"
-            defaultValue={formValues.adress.postalcode}
+            defaultValue={formValues.postalcode}
             />
             <TextField
             id="outlined-basic"
@@ -135,7 +144,7 @@ const FormBuilding = props => {
             type="text"
             name="city"
             size="small"
-            defaultValue={formValues.adress.city}
+            defaultValue={formValues.city}
             />
             <TextField
             id="outlined-basic"
@@ -144,7 +153,7 @@ const FormBuilding = props => {
             type="text"
             name="country"
             size="small"
-            defaultValue={formValues.adress.country}
+            defaultValue={formValues.country}
             />
             {/* <TextField
             id="standard-basic"
@@ -188,4 +197,4 @@ const FormBuilding = props => {
   );
 };
 
-export default FormBuilding;
+export default EditBuilding;

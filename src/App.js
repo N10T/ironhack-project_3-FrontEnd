@@ -5,7 +5,7 @@ import React, {useState} from "react";
 import theme from "./components/palette/palette";
 
 // pages components
-import Home from "./views/home";
+import Home from "./views/Home";
 import Discover from "./views/Discover";
 import MyBuilding from "./views/Buildings";
 import Messages from "./views/Messages";
@@ -23,7 +23,6 @@ import HeaderMain from "./components/HeaderMain";
 import FooterMain from "./components/FooterMain";
 // import SearchBar from "./components/SearchBar";
 
-// auth
 // auth
 import { useAuth } from "./auth/useAuth";
 import UserContext from "./auth/UserContext";

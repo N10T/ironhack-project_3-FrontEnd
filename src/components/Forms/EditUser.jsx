@@ -6,6 +6,9 @@ import APIHandler from './../../api/APIHandler';
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 // Component
 import AvatarUser from "../Upload/AvatarUser";
@@ -35,8 +38,6 @@ const EditUser = props => {
       api.get("/users/" + props.match.params.id)
       .then(res => {
         setFormValues(res.data)
-        // setAvatar(res.data.avatar)
-        // setTmpAvatar(res.data.avatar)
         console.table(res.data)})
   }, [])
 
@@ -54,22 +55,24 @@ const EditUser = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(formValues);
+
+    // api.get("/admin/buildings")
+    // .findOne({ keys: key })
+    // .then(building => )
+    
     const data = new FormData();
     data.append("name", formValues.name || "");
     data.append("lastname", formValues.lastname || "");
     data.append("email", formValues.email || "");
     // data.append("key", formValues.key || "");
-    // data.append("password", formValues.password || "");
     data.append("avatar", avatar);
-    console.log(data);
+  
     api.patch("/users/" + props.match.params.id, data).then(res => {
       console.log(res.data)
     }).catch(err => {
       console.log(err.response)
     })  
   }
-  console.log(formValues, "this is form")
   return ( formValues.name ?
     <div className="user-form">
       <form
@@ -83,12 +86,19 @@ const EditUser = props => {
           tmpAvatar={tmpAvatar||formValues.avatar} clbk={handleImage} 
           />
           <TextField
+            id="standard-basic"
+            label="Information"
+            size="small"
+            disabled
+            />
+          <TextField
             required="true"
             id="outlined-basic"
             label="Name"
             variant="outlined"
             name="name"
             defaultValue={formValues.name}
+            size="small"
             />
           <TextField
           required="true"
@@ -97,6 +107,7 @@ const EditUser = props => {
           variant="outlined"
           name="lastname"
           defaultValue={formValues.lastname}
+          size="small"
           />
           <TextField
           type="email"
@@ -106,21 +117,30 @@ const EditUser = props => {
           variant="outlined"
           name="email"
           defaultValue={formValues.email}
+          size="small"
           />
-          {/* <TextField
+          <TextField
           id="outlined-basic"
-          label="Your building key"
+          label="Your new building key (in construction)"
           variant="outlined"
           name="key"
-          /> */}
-          <TextField
-          type="password"
-          required="true"
-          id="outlined-basic"
-          label="Password"
-          variant="outlined"
-          name="password"
+          size="small"
+          disabled
           />
+          <TextField
+            id="standard-basic"
+            label="Buildings"
+            size="small"
+            disabled
+            size="small"
+            />
+            <List className={classes.root} subheader={<ul />}>
+                {formValues.buildings.map((building,i) => (
+                <ListItem key={i}>
+                    <ListItemText primary={building.name} />
+                </ListItem>
+                ))}
+            </List>
           <div className="one-column">
             <Button
               type="submit"

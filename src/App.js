@@ -18,7 +18,8 @@ import FormKey from "./components/Forms/FormKey";
 import FormInformation from "./components/Forms/FormInformation";
 import SignUp from "./components/Forms/SignUp";
 import SignIn from "./components/Forms/SignIn";
-import EditUser from "./components/Forms/EditUser"
+import EditUser from "./components/Forms/EditUser";
+import AdminEditUser from "./components/Forms/AdminEditUser"
 
 // partials
 import HeaderMain from "./components/HeaderMain";
@@ -60,6 +61,7 @@ function App() {
             <Route exact path="/admin/building/:id" component={EditBuilding} />
             <Route exact path="/admin/key" component={FormKey} />
             <Route exact path="/profile/:id" component={EditUser} />
+            <Route exact path="/admin/edit_user/:id" component={AdminEditUser} />
             <Route
               exact
               path="/building/create-information"

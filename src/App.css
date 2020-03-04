@@ -319,3 +319,11 @@ font-size:0.8em;
   position: absolute;
   z-index: 10;
 }
+
+#avatarForm {
+  width: 100px;
+  height: 100px;
+  font-size: 200%;
+  border: 2px solid #E5B67E;
+  background-color: #E5B67E;
+}

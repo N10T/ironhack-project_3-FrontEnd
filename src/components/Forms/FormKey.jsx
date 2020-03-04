@@ -64,8 +64,8 @@ export default function FormPropsTextFields() {
     apiKey
       .get()
       .then(DBres => {
-        setKey(DBres.data);
-        templateParams.code = DBres.data;
+        setKey(DBres.data.trim());
+        templateParams.code = DBres.data.trim();
       })
       .catch(err => console.error(err));
   }, []);

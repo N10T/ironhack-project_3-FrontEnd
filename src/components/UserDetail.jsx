@@ -45,14 +45,14 @@ export default function ControlledExpansionPanels() {
           <div className="flex vcenter space-between">
             <Typography className={classes.heading}>Building's Name</Typography>
             <Typography className={classes.secondaryHeading}>
-            Adresse : 14 rue de la montée 77320 Meilleray
+              Number of users ?
             </Typography>
             <DeleteIcon onClick={() => alert("delete")} color="secondary" />
             <EditIcon color="primary" />
           </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography>list of availaible keys</Typography>
+          <Typography>Adresse : 14 rue de la montée 77320 Meilleray</Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </div>

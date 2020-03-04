@@ -7,7 +7,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import AdminDrawer from "./AdminDrawer";
-
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 // import SearchIcon from '@material-ui/icons/Search';
 // import InputBase from '@material-ui/core/InputBase';
 // import IconButton from "@material-ui/core/IconButton";
@@ -15,7 +15,8 @@ import AdminDrawer from "./AdminDrawer";
 // import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 
 // Component
-// import LogOut from "./LogOut";
+import LogOut from "./LogOut";
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -93,7 +94,7 @@ export default function ButtonAppBar({clbk}) {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>} */}
-          {/* <LogOut /> */}
+          <ExitToAppIcon id="logout" onClick={()=>alert("logout")} />
         </Toolbar>
       </AppBar>
     </div>

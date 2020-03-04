@@ -55,7 +55,7 @@ export default function SignUp() {
     data.append("password", formValues.password || "");
     data.append("avatar", avatar);
     
-    api.post('/auth/signup', data).then(res => {
+    api.post('/auth/signup', data, setTimeout(window.location.href = `/signin`,250)).then(res => {
       console.log(res.data)
     }).catch(err => {
       console.log(err.response)

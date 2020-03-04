@@ -27,6 +27,8 @@ const FormBuilding = props => {
     console.log("vvvvvvvvvv - submited - vvvvvvvvvv");
     console.table(formValues)
     api.post("/buildings", formValues);
+
+  setTimeout(window.location.href = `/admin/building/`,250)
   };
 
   const handleInputs = e => {

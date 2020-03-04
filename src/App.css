@@ -133,6 +133,10 @@ align-items: center;
 border: 1px solid blue
 }
 
+.small-font>span{
+font-size:0.8em;
+}
+
 .scroll {
   overflow-y: scroll;
   height: 100px;

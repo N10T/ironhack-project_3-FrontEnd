@@ -52,7 +52,7 @@ function App() {
             {/* <Route exact path="/user/building" component={MyBuilding} /> */}
             {/* Why to do a protectet route: */}
             <ProtectedRoute exact path="/user/building" component={MyBuilding} />
-            <Route exact path="/admin/building" component={FormBuilding} />
+            <Route exact path="/admin/create-building" component={FormBuilding} />
             <Route exact path="/admin/buildings" component={AllBuildings} />
             <Route exact path="/admin/users" component={AllUsers} />
             <Route exact path="/user/messages" component={Messages} />

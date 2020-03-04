@@ -18,8 +18,7 @@ export default function Buildings() {
   const [infos, setInfos] = useState([]);
   const [infosFiltered, setInfosFiltered] = useState([]);
 
-    console.log(currentUser);
-    
+  console.log(currentUser);
 
   useEffect(() => {
     api.get("/informations")

@@ -19,4 +19,7 @@ export default class APIHandler {
   patch(endpoint, data) {
     return this.handler.patch(endpoint, data);
   }
+  delete(endpoint) {
+    return this.handler.delete(endpoint);
+  }
 }

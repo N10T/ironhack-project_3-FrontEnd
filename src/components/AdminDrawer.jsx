@@ -47,7 +47,7 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        <ListItem button component="a" href="/building/create-information">
+        <ListItem button component="a" href="/admin/create-building">
           <ListItemIcon>
             <AddCircleOutlineIcon />
           </ListItemIcon>

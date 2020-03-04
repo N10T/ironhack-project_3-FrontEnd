@@ -32,9 +32,28 @@ h1{
 .space-between{
   justify-content: space-between;
 }
-
+.large{
+  width: 80vw;
+}
+.space-around{
+  justify-content: space-around;
+}
 #messages .MuiCardContent-root{
   padding: 3px 15px;
+}
+
+.slide-in-top {
+	-webkit-animation: slide-in-top 0.15s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
+	        animation: slide-in-top 0.15s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
+        }
+
+/* .infocards .makeStyles-heading-180{
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+} */
+#txt-head-card{
+margin-right: 30px;
 }
 
 #messages .MuiTypography-body2{
@@ -95,7 +114,7 @@ h4.MuiTypography-root.makeStyles-title-3.MuiTypography-h4{
 }
 
 #search-bar{
-  z-index: 0;
+  z-index: 10;
 }
 
 .one-column {
@@ -269,6 +288,32 @@ font-size:0.8em;
     opacity: 1;
   }
 }
+
+@-webkit-keyframes slide-in-top {
+  0% {
+    -webkit-transform: translateY(-1000px);
+            transform: translateY(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-top {
+  0% {
+    -webkit-transform: translateY(-1000px);
+            transform: translateY(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 
 .makeStyles-root-104 .MuiSvgIcon-root {
   position: absolute;

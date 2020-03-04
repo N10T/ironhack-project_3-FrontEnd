@@ -1,6 +1,7 @@
 // React
-import React, {useState} from "react";
+import React from "react";
 import APIHandler from './../../api/APIHandler';
+import { useState, useEffect, useContext } from "react";
 
 // Style
 import { makeStyles } from "@material-ui/core/styles";
@@ -15,8 +16,10 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
 import TextField from "@material-ui/core/TextField";
+import {useAuth} from './../../auth/useAuth'
 
 const api = new APIHandler();
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -57,12 +60,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function FormInformation() {
   const classes = useStyles();
-  // const [expanded, setExpanded] = React.useState(false);
-  // const [state, setState] = React.useState({
-  //   category: "General",
-  //   // name: ""
-  // });
-
+  const { currentUser, isLoggedIn, isLoading} = useAuth();
+  // console.table(currentUser ? currentUser : "LOGOUT");
+  
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
@@ -88,10 +88,11 @@ export default function FormInformation() {
 
     const data = new FormData();
     data.append("publicationDate", Date.now());
-    data.append("category", formValues.category);
+    data.append("category", formValues.category ? formValues.category : "General");
     data.append("textContent", formValues.description);
     data.append("multimediaContent", avatar);
-    // data.append("userOwner", "Andy");
+    data.append("userOwner", currentUser._id);
+    data.append("buildings", currentUser.buildings[0]);
     
     api.post('/informations', data);
     console.log("submit");
@@ -131,8 +132,8 @@ export default function FormInformation() {
       <Card raised="true" className={classes.root + " center"}>
         <CardHeader
           avatar={
-            <Avatar aria-label="avatar" className={classes.avatar}>
-              A
+            <Avatar src={currentUser.avatar ? currentUser.avatar : ""} aria-label="avatar" className={classes.avatar}>
+              {currentUser.name ? currentUser.name.substring(0,1) : ""}
             </Avatar>
           }
 
@@ -162,8 +163,8 @@ export default function FormInformation() {
               </Select>
             </FormControl>
           }
-        //   title="CREATE INFO"
-        //   subheader="September 14, 2016"
+          title={currentUser.name ? currentUser.name : ""}
+          subheader={currentUser.lastname ? currentUser.lastname : ""}
         />
         <CardContent>
           <ImageInfo tmpAvatar={tmpAvatar} clbk={handleImage} />

@@ -10,6 +10,8 @@ import APIHandler from "../api/APIHandler";
 //Components
 import SearchBar from "./../components/SearchBar";
 import UserDetail from "./../components/UserDetail";
+import ReactLoading from "react-loading";
+import palette from "./../components/palette/palette"
 const api = new APIHandler();
 
 
@@ -37,6 +39,8 @@ export default function Users() {
       )
     );
   };
+
+  const usersMapper = arr => arr.map((a, index) => <UserDetail data={a} key={index} /> )
   return (
     <div id="users">
 
@@ -45,10 +49,12 @@ export default function Users() {
       </Fab>
 
       <SearchBar clbk={searchHandler} />
-      <UserDetail />
-      <UserDetail />
-      <UserDetail />
-
+      <div className="infocards text-focus-in">
+        {users ? usersMapper(usersFiltered).length ? usersMapper(usersFiltered) : <ReactLoading className="fixed" top="50vh" left="20vw" type="bubbles" color={palette.palette.primary.main} height={10} width="100vw" />
+         : (
+          <ReactLoading position="fixed" top="50vh" left="20vw" type="bubbles" color={palette.palette.primary.main} height={10} width="100vw" />
+        )}
+    </div>
     </div>
   );
 }

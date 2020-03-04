@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
@@ -15,7 +15,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-
+import {useAuth} from './../auth/useAuth'
 //Moment - Dealing with time
 import * as dayjs from "dayjs";
 
@@ -42,21 +42,26 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function RecipeReviewCard({ info }) {
+export default function RecipeReviewCard({data,users}) {
+  const { currentUser, isLoggedIn, isLoading} = useAuth();
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-
+  
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  
+ 
+  const avatarMatch = () => users.filter(u => u._id === data.userOwner)[0]
 
   return (
+!isLoading ? 
     <div className="center card">
-      <Card className={classes.root}>
+      {data.publicationDate ? <Card className={classes.root}>
         <CardHeader
           avatar={
-            <Avatar aria-label="recipe" className={classes.avatar}>
-              R
+            <Avatar src={data.userOwner ? avatarMatch().avatar : ""} aria-label="recipe" className={classes.avatar}>
+              
             </Avatar>
           }
           action={
@@ -64,21 +69,19 @@ export default function RecipeReviewCard({ info }) {
               <MoreVertIcon />
             </IconButton>
           }
-          title="userOwner"
-          subheader={dayjs(info.publicationDate).format("MM-DD-YYYY HH:MM")}
+          title={data.userOwner ? avatarMatch().name : "UNKNOW"}
+          subheader={dayjs(data.publicationDate).format("MM-DD-YYYY HH:MM")}
         />
-        {info.multimediaContent ? (
+        
           <CardMedia
             className={classes.media}
-            image={info.multimediaContent}
+            image={data.multimediaContent}
             title=""
           />
-        ) : (
-          ""
-        )}
+         
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            {info.textContent}
+            {data.textContent}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
@@ -131,7 +134,9 @@ export default function RecipeReviewCard({ info }) {
             </Typography>
           </CardContent>
         </Collapse>
-      </Card>
-    </div>
+      </Card>: (
+        ""
+      )}
+    </div>: ""
   );
 }

@@ -23,6 +23,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
+import Avatar from "@material-ui/core/Avatar";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -40,13 +41,16 @@ const useStyles = makeStyles(theme => ({
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
     color: theme.palette.text.secondary
+  },
+  avatar: {
+    backgroundColor: theme.palette.secondary.main
   }
 }));
 const api = new APIHandler();
 
 export default function ControlledExpansionPanels({ data }) {
   const [open, setOpen] = React.useState(false);
-
+  console.table(data);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -56,12 +60,6 @@ export default function ControlledExpansionPanels({ data }) {
   };
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
-
-  const DeleteKey = (e, indexList) => {
-    const newKeys = data.keys.filter((k, i) => i !== indexList);
-    console.log(newKeys);
-    api.patch(`/users/key/${data._id}/delete`, { newKeys });
-  };
 
   const handleChange = panel => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -82,41 +80,59 @@ export default function ControlledExpansionPanels({ data }) {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <div className="flex vcenter space-between">
-  <Typography className={classes.heading}>{data.name}{' '}{data.lastname.toUpperCase()}</Typography>
-            <Typography className={classes.secondaryHeading}>
-              ${data.role}
+          <div className="flex vcenter large space-between">
+            <div className={classes.heading}>
+              <Avatar
+                src={data.avatar ? data.avatar : ""}
+                aria-label="recipe"
+                className={classes.avatar}
+              >
+                {data.name.substring(0, 1).toUpperCase()}
+              </Avatar>
+
+              <Typography className="">
+                {data.role}
+              </Typography>
+            </div>
+            <div className="right flex vcenter space-around">
+            <Typography id='txt-head-card' className={classes.secondaryHeading}>
+              {data.name}{' '}
+              {data.lastname.toUpperCase()}
             </Typography>
             <DeleteIcon onClick={handleClickOpen} color="secondary" />
             <EditIcon
-              onClick={e =>
-                (window.location.href = `/admin/user/${data._id}`)
-              }
+              onClick={e => (window.location.href = `/admin/user/${data._id}`)}
               color="primary"
             />
+            </div>
           </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Grid item xs={12}>
             <div className={classes.demo}>
               <List>
-                { data.buildings.map((k, i) => (
-                    <ListItem key={i}>
+
+                    <ListItem>
                       <ListItemText
                         className="small-font"
-                        key={i}
-                        primary={k}
+                        primary={`email: ${data.email}`}
                       />{" "}
-                      <ListItemSecondaryAction>
+                      {data.buildings ? data.buildings.map((a,i)=> a=== "" ? "No building" :<ListItemText
+                      key={i}
+                        className="small-font"
+                        primary={`building: ${a.name}`}
+                      />):""}
+                      
+                      {/* <ListItemSecondaryAction>
                         <DeleteIcon
                           key={i}
                           value={i}
                           name={i}
-                          onClick={e => DeleteKey(e, i)}
+                          // onClick={e => DeleteKey(e, i)}
                         />
-                      </ListItemSecondaryAction>
+                      </ListItemSecondaryAction> */}
                     </ListItem>
-                  ))}
+
               </List>
             </div>
           </Grid>

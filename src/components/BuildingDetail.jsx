@@ -72,6 +72,7 @@ function deleteBuilding(){
   window.location.href = `/admin/building/`
 
 }
+// if(!data) return
   return (
     <div className={classes.root}>
       <ExpansionPanel

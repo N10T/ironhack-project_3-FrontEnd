@@ -61,19 +61,20 @@ const useStyles = makeStyles(theme => ({
     const classes = useStyles();
     const { currentUser, isLoggedIn, isLoading} = useAuth();
     const [users, setUsers] = useState([]);
-    const [building, setBuilding] = useState([currentUser.buildings]);
+    const [building, setBuilding] = useState([]);
     const inputLabel = React.useRef(null);
     const [labelWidth, setLabelWidth] = useState(0);
-    useEffect(() => {
-      setLabelWidth(inputLabel.current.offsetWidth);
-    }, []);
+    // useEffect(() => {
+    //   setLabelWidth(inputLabel.current.offsetWidth);
+    // }, []);
     useEffect(() => {
       api.get("/users").then(u => {
         // console.table(currentUser.buildings[0])
         // console.table(u.data.filter(a=>!!a.buildings[0]).filter(a=>a.buildings[0]._id === currentUser.buildings[0]))
         // console.log("HERE",users.data.filter(u=>u.buildings[0] === currentUser.buildings[0]) )
+        if(!currentUser) return 
         setUsers(u.data.filter(a=>!!a.buildings[0]).filter(a=>a.buildings[0]._id === currentUser.buildings[0]))
-        
+        setBuilding(currentUser.buildings)
       }).catch(err=>console.error(err));
       }, [currentUser]);
     
@@ -155,7 +156,7 @@ console.table(formValues)
                   name="to"
                 >
                   <option value="" />
-                {users.map((u,i)=> <option value={u._id}>{u.name}</option>)    }
+                {users.map((u,i)=> <option key={i} value={u._id}>{u.name}</option>)    }
 
                 </Select>
               </FormControl>

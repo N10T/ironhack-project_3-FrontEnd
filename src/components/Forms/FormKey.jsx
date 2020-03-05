@@ -10,7 +10,7 @@ import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import emailjs from "emailjs-com";
-import { v4 as uuidv4 } from 'uuid';
+import { v1 as uuidv1 } from 'uuid';
 
 
 const api = new APIHandler();
@@ -43,7 +43,7 @@ export default function FormPropsTextFields() {
   // const inputLabel = React.useRef(null);
   // const [labelWidth, setLabelWidth] = React.useState(0);
   const [formValues, setFormValues] = useState({});
-  const [key, setKey] = useState("");
+  const [key, setKey] = useState(uuidv1());
   const [buildings, setBuildings] = useState([]);
   
   function sendEmail() {
@@ -58,7 +58,7 @@ export default function FormPropsTextFields() {
     }
     
     useEffect(() => {
-      uuidv4()
+      uuidv1()
     }, []);
     
 console.log("key,",key);

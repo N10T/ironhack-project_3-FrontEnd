@@ -1,5 +1,5 @@
 //React
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import APIHandler from './../api/APIHandler';
 
 //Style
@@ -7,6 +7,7 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 // import IconButton from '@material-ui/core/IconButton';
 import {useAuth} from './../auth/useAuth'
+import UserContext from "./../auth/UserContext";
 
 
 //Components
@@ -17,29 +18,35 @@ const api = new APIHandler();
 export default function Messages() {
   const { currentUser, isLoggedIn, isLoading} = useAuth();
   const [messages, setMessages] = useState([]);
+  const [users, setUsers] = useState([]);
   const [messagesFiltered, setMessagesFiltered] = useState([]);
+  const userContext = useContext(UserContext);
+  const { setCurrentUser } = userContext;
   
   useEffect(() => {
-    api.get("/messages")
+    api.get(`/users`)
       .then(DBres => {
-        // console.log(currentUser._id);
-        
-        setMessages(DBres.data.map(a=>a.to._id).filter(b=> b === currentUser._id));
-        setMessagesFiltered(messages);
+        setMessages([...DBres.data.filter(a=>a.email === currentUser.email)[0].messages].sort((a,b)=>b.sendDate < a.sendDate ? -1 : 1))
+        setUsers(DBres.data)
+        console.table("messages",(DBres.data.filter(a=>a.email === currentUser.email)[0].messages))
+        console.table("users",DBres.data)
+
       })
       .catch(err => console.error(err));
     }, [currentUser]);
     
-    // console.table(messages)
+    useEffect(() => setMessagesFiltered([...messages].sort((a,b)=>b.sendDate < a.sendDate ? -1 : 1)),[messages])
+
+// console.table("MIX",mixUser())
 
   const searchHandler = e => {
-    messagesFiltered(
-      messages.filter((info, ind, arr) =>
+    setMessagesFiltered(
+      messages.filter((message, ind, arr) =>
         e.target.value
-          ? info.textContent
+          ? message.textContent
               .toLowerCase()
               .includes(e.target.value.toLowerCase())
-          : arr
+          : [...arr].sort((a,b)=>b.sendDate < a.sendDate ? -1 : 1)
       )
     );
   };
@@ -50,8 +57,8 @@ export default function Messages() {
         <AddIcon />
       </Fab>
 
-      <SearchBar clbk={searchHandler} />
-      { messages.map((a,i)=>  <UserFirstMessage key={i} data={a}/>)}
+      <SearchBar clbk={(e)=>searchHandler(e)} />
+      { messagesFiltered.map((a,i)=>  <UserFirstMessage key={i} users={users} data={a}/>)}
 
     </div>
   );

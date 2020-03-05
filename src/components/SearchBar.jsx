@@ -75,7 +75,7 @@ export default function SearchAppBar({clbk}) {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder={`Search by ${window.location.pathname === "/user/building" ? "description…" : "user"}`}
+              placeholder={`Search by ${window.location.pathname === "/user/building" ? "description…" : window.location.pathname === "/user/messages" ? "messages" : "user"}`}
               onChange={e => clbk(e)}
               classes={{
                 root: classes.inputRoot,

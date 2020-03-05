@@ -35,12 +35,13 @@ export default withRouter(function Buildings() {
       .then(DBres => {
         
         setInfos(DBres.data.informations);
-        setTimeout(()=>{setInfosFiltered(DBres.data.informations)},1500);
+        setInfosFiltered(DBres.data.informations);
       })
       .catch(err => console.error(err));},10)
   }, [currentUser]);
 
   const searchHandler = e => {
+    console.log(e.target.value)
     setInfosFiltered(
       infos.filter((info, ind, arr) =>
         e.target.value
@@ -59,10 +60,7 @@ export default withRouter(function Buildings() {
     <>
       <SearchBar clbk={searchHandler} />
       <div className="infocards text-focus-in">
-        {!isLoading ? (
-          infoMapper(infosFiltered ? infosFiltered : infos ).length ? (
-            infoMapper(infos)
-          ) : (
+        {!isLoading ? infoMapper(infosFiltered) : (
             <ReactLoading
               className="fixed"
               top="50vh"
@@ -73,17 +71,7 @@ export default withRouter(function Buildings() {
               width="100vw"
             />
           )
-        ) : (
-          <ReactLoading
-            position="fixed"
-            top="50vh"
-            left="20vw"
-            type="bubbles"
-            color={palette.palette.primary.main}
-            height={10}
-            width="100vw"
-          />
-        )}
+        }
       </div>
     </>
   );

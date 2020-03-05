@@ -78,14 +78,14 @@ export default function SignUp({ history }) {
       >
         <AvatarUser tmpAvatar={tmpAvatar} clbk={handleImage} />
         <TextField
-          required="true"
+          required={true}
           id="outlined-basic"
           label="Name"
           variant="outlined"
           name="name"
         />
         <TextField
-          required="true"
+          required={true}
           id="outlined-basic"
           label="Lastname"
           variant="outlined"
@@ -93,7 +93,7 @@ export default function SignUp({ history }) {
         />
         <TextField
           type="email"
-          required="true"
+          required={true}
           id="outlined-basic"
           label="E-mail"
           variant="outlined"
@@ -107,7 +107,7 @@ export default function SignUp({ history }) {
         />
         <TextField
           type="password"
-          required="true"
+          required={true}
           id="outlined-basic"
           label="Password"
           variant="outlined"

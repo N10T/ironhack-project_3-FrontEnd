@@ -83,6 +83,7 @@ const EditUser = props => {
         onChange={handleInputs}
       >
           <AvatarUser
+          id="avatarForm"
           tmpAvatar={tmpAvatar||formValues.avatar} clbk={handleImage} 
           />
           <TextField

@@ -1,5 +1,5 @@
 // React
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 
 import { useAuth } from "./../auth/useAuth";
@@ -15,7 +15,7 @@ import palette from "./../components/palette/palette";
 const api = new APIHandler();
 
 export default withRouter(function Buildings() {
-  const { currentUser, isLoggedIn, isLoading } = useAuth();
+  const { currentUser, isLoading } = useAuth();
   const [users, setUsers] = useState([]);
   const [infos, setInfos] = useState([]);
   const [infosFiltered, setInfosFiltered] = useState(infos);

@@ -1,12 +1,10 @@
 import APIHandler from "../api/APIHandler";
 
 //React
-import React, { useState, useEffect, makeStyles } from "react";
+import React, { useState, useEffect } from "react";
 
 //Style
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
-import IconButton from '@material-ui/core/IconButton';
+
 
 //Components
 import SearchBar from "./../components/SearchBar";

@@ -1,7 +1,7 @@
 // React
 import React from "react";
 import APIHandler from './../../api/APIHandler';
-import { useState, useEffect, useContext } from "react";
+import { useState } from "react";
 
 // Style
 import { makeStyles } from "@material-ui/core/styles";
@@ -60,7 +60,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function FormInformation() {
   const classes = useStyles();
-  const { currentUser, isLoggedIn, isLoading} = useAuth();
+  const { currentUser} = useAuth();
   // console.table(currentUser ? currentUser : "LOGOUT");
   
   const inputLabel = React.useRef(null);

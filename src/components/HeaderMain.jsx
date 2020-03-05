@@ -1,10 +1,10 @@
-import APIHandler from './../api/APIHandler';
+import APIHandler from "./../api/APIHandler";
 
 // React
-import React, { useState, useEffect,useContext } from "react";
+import React, { useContext } from "react";
 import UserContext from "./../auth/UserContext";
 
-import {useAuth} from './../auth/useAuth'
+import { useAuth } from "./../auth/useAuth";
 
 // Style
 import { makeStyles, fade } from "@material-ui/core/styles";
@@ -24,7 +24,6 @@ import { withRouter } from "react-router-dom";
 // Component
 // import LogOut from "./LogOut";
 const api = new APIHandler();
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -76,22 +75,37 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default withRouter(function ButtonAppBar(props) {
-  const { currentUser, isLoggedIn, isLoading} = useAuth();
+  const isBar = () =>
+    window.location.pathname === "/signin" ||
+    window.location.pathname === "/signup" ||
+    window.location.pathname === "/discover" ||
+    window.location.pathname === "/" 
+
+
+  const { currentUser, isLoggedIn } = useAuth();
   const classes = useStyles();
   const userContext = useContext(UserContext);
   const { setCurrentUser } = userContext;
 
   const handleSignout = () =>
-  api.post("/auth/signout").finally(() => {
+    api.post("/auth/signout").finally(() => {
+      props.history.push("/signin")
       setCurrentUser(null);
+
     });
-  return (
+    
+  return !isBar() ? (
     <div className={classes.root}>
       <AppBar position="fixed" color="primary">
         <Toolbar>
-          {currentUser.role === 'super admin' || currentUser.role === 'admin'?  <AdminDrawer /> :""}
+          {currentUser.role === "super admin" ||
+          currentUser.role === "admin" ? (
+            <AdminDrawer />
+          ) : (
+            ""
+          )}
           <Typography variant="h4" className={classes.title + " vcenter"}>
-            <img src="/logo/CocoonWhite.png" alt="White Cocoon" />
+            <img src={isLoggedIn ? "/logo/CocoonWhite.png" : "/logo/CocoonMainColor.png"} alt="White Cocoon" />
             co-coon
           </Typography>
           {/* {window.location.pathname === "/user/building" &&           <div className={classes.search}>
@@ -112,6 +126,7 @@ export default withRouter(function ButtonAppBar(props) {
         </Toolbar>
       </AppBar>
     </div>
+  ) : (
+    ""
   );
-}
-)
+});

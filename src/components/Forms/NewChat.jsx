@@ -1,6 +1,8 @@
 // React
-import React, {useState} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import APIHandler from './../../api/APIHandler';
+
+import {useAuth} from './../../auth/useAuth'
 
 // Style
 import { makeStyles } from "@material-ui/core/styles";
@@ -57,17 +59,31 @@ const useStyles = makeStyles(theme => ({
   
   export default function Chat() {
     const classes = useStyles();
-    // const [expanded, setExpanded] = React.useState(false);
-    // const [state, setState] = React.useState({
-    //   category: "General",
-    //   // name: ""
-    // });
-  
+    const { currentUser, isLoggedIn, isLoading} = useAuth();
+    const [users, setUsers] = useState([]);
+    const [building, setBuilding] = useState([currentUser.buildings]);
     const inputLabel = React.useRef(null);
-    const [labelWidth, setLabelWidth] = React.useState(0);
-    React.useEffect(() => {
+    const [labelWidth, setLabelWidth] = useState(0);
+    useEffect(() => {
       setLabelWidth(inputLabel.current.offsetWidth);
     }, []);
+    useEffect(() => {
+      api.get("/users").then(u => {
+        // console.table(currentUser.buildings[0])
+        // console.table(u.data.filter(a=>!!a.buildings[0]).filter(a=>a.buildings[0]._id === currentUser.buildings[0]))
+        // console.log("HERE",users.data.filter(u=>u.buildings[0] === currentUser.buildings[0]) )
+        setUsers(u.data.filter(a=>!!a.buildings[0]).filter(a=>a.buildings[0]._id === currentUser.buildings[0]))
+        
+      }).catch(err=>console.error(err));
+      }, [currentUser]);
+    
+      // useEffect(() => {
+      //   api.get("/buildings").then(b => {
+      //     console.log()
+      //     setBuilding(b.data)
+          
+      //   }).catch(err=>console.error(err));
+      //   }, []);
     
     // const handleChange = name => event => {
     //   setState({
@@ -84,23 +100,21 @@ const useStyles = makeStyles(theme => ({
     const handleSubmit = e => {
       e.preventDefault();
       formValues.sendDate = Date.now()
-      formValues.from = "USER"
+      formValues.from = currentUser._id
 
       
-      api.post('/message', formValues);
+      api.post('/messages', formValues);
       console.log("submit");
       console.log(formValues);
-      setTimeout(()=>window.location.href = "/user/messages", 1000)
+      // setTimeout(()=>window.location.href = "/user/messages", 1000)
       
     }
   
     const handleInputs = e => {
       const value = e.target.value;
       const name = e.target.name;
-      
       setFormValues({ ...formValues, [name]: value});
-      // formValues.category = state.category
-      // console.log(formValues);
+console.table(formValues)
     }
    
     // For geting the user information is necesary to use a useEffect to get it from the db.
@@ -141,7 +155,7 @@ const useStyles = makeStyles(theme => ({
                   name="to"
                 >
                   <option value="" />
-                  <option value={"Social"}>Map & filter ici</option>
+                {users.map((u,i)=> <option value={u._id}>{u.name}</option>)    }
 
                 </Select>
               </FormControl>

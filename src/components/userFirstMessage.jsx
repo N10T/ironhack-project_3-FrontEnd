@@ -26,8 +26,9 @@ const useStyles = makeStyles({
     },
   });
 
-export default function Messages() {
+export default function Messages({data}) {
 const classes = useStyles();
+console.log("foo");
 
     return (
         <>
@@ -35,10 +36,10 @@ const classes = useStyles();
       <CardContent>
           <div className="flex space-between">
         <Typography variant="h6" component="h2">
-          Contacts Name
+          {data.from}
         </Typography>
         <Typography className={classes.title} color="secondary" gutterBottom>
-          Date
+        {data.from}
         </Typography>
 
           </div>

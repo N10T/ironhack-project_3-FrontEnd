@@ -1,28 +1,37 @@
 //React
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import APIHandler from './../api/APIHandler';
 
 //Style
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 // import IconButton from '@material-ui/core/IconButton';
+import {useAuth} from './../auth/useAuth'
 
 
 //Components
 import SearchBar from "./../components/SearchBar";
 import UserFirstMessage from "./../components/userFirstMessage";
+const api = new APIHandler();
 
 export default function Messages() {
+  const { currentUser, isLoggedIn, isLoading} = useAuth();
+
   const [messages, setMessages] = useState([]);
   const [messagesFiltered, setMessagesFiltered] = useState([]);
   
-  // useEffect(() => {
-  //   APIHandler.get("/messages/:id")
-  //     .then(DBres => {
-  //       setMessages([...DBres.data].sort((a,b)=> a.publicationDate-b.publicationDate));
-  //       setMessagesFiltered(DBres.data);
-  //     })
-  //     .catch(err => console.error(err));
-  // }, []);
+  useEffect(() => {
+    api.get("/messages")
+      .then(DBres => {
+        console.log(currentUser._id);
+        
+        setMessages(DBres.data.map(a=>a.to._id).filter(b=> b === currentUser._id));
+        setMessagesFiltered(messages);
+      })
+      .catch(err => console.error(err));
+    }, [currentUser]);
+    
+    console.log(messages)
 
   const searchHandler = e => {
     messagesFiltered(
@@ -43,22 +52,8 @@ export default function Messages() {
       </Fab>
 
       <SearchBar clbk={searchHandler} />
-      <UserFirstMessage />
-      <UserFirstMessage />
-      <UserFirstMessage />
-      <UserFirstMessage />
-      <UserFirstMessage />
-      <UserFirstMessage />
-      <UserFirstMessage />
-      <UserFirstMessage />
-      <UserFirstMessage />
-      <UserFirstMessage />
-      <UserFirstMessage />
-      <UserFirstMessage />
-      <UserFirstMessage />
-      <UserFirstMessage />
-      <UserFirstMessage />
-      <UserFirstMessage />
+      { messages.map((a,i)=>  <UserFirstMessage key={i} data={a}/>)}
+
     </div>
   );
 }

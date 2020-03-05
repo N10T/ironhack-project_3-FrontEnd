@@ -6,7 +6,6 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 // import IconButton from '@material-ui/core/IconButton';
 import APIHandler from "../api/APIHandler";
-
 //Components
 import SearchBar from "./../components/SearchBar";
 import UserDetail from "./../components/UserDetail";
@@ -21,27 +20,27 @@ export default function Users() {
   
   useEffect(() => {
     api.get("/users")
-      .then(DBres => {
-        setUsers([...DBres.data].sort((a,b)=> a.name-b.name));
-        setUsersFiltered(DBres.data);
+    .then(DBres => {
+      setUsers([...DBres.data].sort((a,b)=> a.name-b.name));
+      setUsersFiltered(DBres.data);
       })
       .catch(err => console.error(err));
-  }, []);
-
-  const searchHandler = e => {
-    usersFiltered(
-      users.filter((info, ind, arr) =>
+    }, []);
+    
+    const searchHandler = e => {
+      usersFiltered(
+        users.filter((info, ind, arr) =>
         e.target.value
-          ? info.textContent
-              .toLowerCase()
-              .includes(e.target.value.toLowerCase())
-          : arr
-      )
-    );
-  };
-
-  const usersMapper = arr => arr.map((a, index) => <UserDetail data={a} key={index} /> )
-  return (
+        ? info.textContent
+        .toLowerCase()
+        .includes(e.target.value.toLowerCase())
+        : arr
+        )
+        );
+      };
+      
+      const usersMapper = arr => arr.map((a, index) => <UserDetail data={a} key={index} /> )
+      return (
     <div id="users">
 
 <Fab href="/user/create-a-chat" id="addIcon" size="medium" color="primary" aria-label="add">

@@ -1,10 +1,10 @@
 import axios from "axios";
 
 export default class APIHandler {
-  constructor(baseURL, needsCredentials = true) {
+  constructor(baseURL, needsCredentials) {
     this.handler = axios.create({
       baseURL: baseURL || process.env.REACT_APP_BACKEND_URL,
-      withCredentials: needsCredentials
+      withCredentials: needsCredentials || true
     });
   }
 

@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 // import IconButton from '@material-ui/core/IconButton';
-import APIHandler from "../api/APIHandler";
+import APIHandler from "./../api/APIHandler";
 //Components
 import SearchBar from "./../components/SearchBar";
 import UserDetail from "./../components/UserDetail";

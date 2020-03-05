@@ -9,7 +9,7 @@ import ReactLoading from "react-loading";
 // Component
 import InfoCard from "./../components/InfoCard";
 import SearchBar from "./../components/SearchBar";
-import APIHandler from "../api/APIHandler";
+import APIHandler from "./../api/APIHandler";
 import palette from "./../components/palette/palette";
 
 const api = new APIHandler();

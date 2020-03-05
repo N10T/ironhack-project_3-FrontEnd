@@ -1,4 +1,4 @@
-import APIHandler from "../api/APIHandler";
+import APIHandler from "./../api/APIHandler";
 
 //React
 import React, { useState, useEffect } from "react";

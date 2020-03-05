@@ -42,13 +42,12 @@ var templateParams = {
 
 export default function FormPropsTextFields() {
   const classes = useStyles();
-
   // const inputLabel = React.useRef(null);
   // const [labelWidth, setLabelWidth] = React.useState(0);
   const [formValues, setFormValues] = useState({});
   const [key, setKey] = useState("");
   const [buildings, setBuildings] = useState([]);
-
+  
   function sendEmail() {
     emailjs.send("default_service", "template_9SGE8ZOJ", templateParams).then(
       function(response) {
@@ -57,21 +56,22 @@ export default function FormPropsTextFields() {
       function(error) {
         console.log("FAILED...", error);
       }
-    );
-  }
-
-  useEffect(() => {
-    apiKey
+      );
+    }
+    
+    useEffect(() => {
+      apiKey
       .get()
       .then(DBres => {
         setKey(DBres.data.trim());
         templateParams.code = DBres.data.trim();
       })
       .catch(err => console.error(err));
-  }, []);
-
-  useEffect(() => {
-    api
+    }, []);
+    
+    console.log("key",key)
+    useEffect(() => {
+      api
       .get("/buildings")
       .then(DBres => {
         setBuildings(DBres.data);

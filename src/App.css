@@ -72,7 +72,9 @@ header, #footer {
 header img{
   max-height: 30px;
 }
-
+.fix{
+  position: fixed;
+}
 header .MuiTypography-h4{
   font-family: Amatic SC;
 }

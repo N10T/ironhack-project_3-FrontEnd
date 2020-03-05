@@ -78,7 +78,7 @@ export default function FormPropsTextFields() {
         console.log(DBres.data);
       })
       .catch(err => console.error(err));
-  }, []);
+  }, [key]);
 
   const handleSubmit = e => {
     e.preventDefault();

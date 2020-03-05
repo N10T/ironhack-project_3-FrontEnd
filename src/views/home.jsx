@@ -44,8 +44,8 @@ export default function Home() {
         size="small"
         // endIcon={<Icon>send</Icon>}
       >
-        sign in
+        sign in 
       </Button></div>
     </div>
-  );
+  );  
 }

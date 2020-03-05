@@ -2,6 +2,7 @@
 // React
 import React, {useState} from "react";
 import APIHandler from './../../api/APIHandler';
+import { Link as RouterLink } from 'react-router-dom';
 
 // Style
 import TextField from "@material-ui/core/TextField";
@@ -126,7 +127,7 @@ export default function SignUp() {
               color="secondary"
               className={classes.button}
               size="small"
-              href="/signin"
+              component={RouterLink} to="/signin"
               //   endIcon={<Icon>send</Icon>}
             >
               sign in

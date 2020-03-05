@@ -1,6 +1,7 @@
 // React
 import React, {useState} from "react";
 import APIHandler from './../../api/APIHandler';
+import { Link as RouterLink } from 'react-router-dom';
 
 // Styles
 import TextField from "@material-ui/core/TextField";
@@ -63,7 +64,8 @@ export default function Signin({history}) {
           variant="outlined"
           name="email"
           />
-          <TextField 
+          <TextField
+          type="password"
           required="true"
           id="outlined-basic"
           label="Password"
@@ -86,7 +88,7 @@ export default function Signin({history}) {
               color="secondary"
               className={classes.button}
               size="small"
-              href="/signup"
+              component={RouterLink} to="/signup"
               //   endIcon={<Icon>send</Icon>}
             >
               sign up

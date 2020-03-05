@@ -58,7 +58,7 @@ export default function Signin({history}) {
       >
           {/* <h1>SIGN IN</h1> */}
           <TextField
-          required="true"
+          required={true}
           id="outlined-basic"
           label="E-mail"
           variant="outlined"
@@ -66,7 +66,7 @@ export default function Signin({history}) {
           />
           <TextField
           type="password"
-          required="true"
+          required={true}
           id="outlined-basic"
           label="Password"
           variant="outlined" 

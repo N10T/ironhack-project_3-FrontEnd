@@ -3,7 +3,6 @@ import React from "react";
 
 // Style
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
-import { Avatar } from "@material-ui/core";
 
 export default function IconUser({ clbk, tmpAvatar = "" }) {
   const fileInput = React.createRef();

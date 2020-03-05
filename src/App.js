@@ -62,11 +62,7 @@ function App() {
             <Route exact path="/admin/key" component={FormKey} />
             <Route exact path="/profile/:id" component={EditUser} />
             <Route exact path="/admin/edit_user/:id" component={AdminEditUser} />
-            <Route
-              exact
-              path="/building/create-information"
-              component={FormInformation}
-            />
+            <Route exact path="/building/create-information" component={FormInformation} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/signin" component={SignIn} />
             <Route exact path="/user/create-a-chat" component={NewChat} />

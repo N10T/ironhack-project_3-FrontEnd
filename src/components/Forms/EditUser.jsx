@@ -133,7 +133,6 @@ const EditUser = props => {
             label="Buildings"
             size="small"
             disabled
-            size="small"
             />
             <List className={classes.root} subheader={<ul />}>
                 {formValues.buildings.map((building,i) => (

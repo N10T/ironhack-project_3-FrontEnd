@@ -15,7 +15,6 @@ import Select from "@material-ui/core/Select";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
-import Grid from '@material-ui/core/Grid';
 
 const api = new APIHandler();
 
@@ -50,25 +49,10 @@ const AdminEditUser = props => {
   const classes = useStyles();
 
   const [formValues, setFormValues] = useState({});
-  // ASK!!!!!!!!
-  // const [checkedCanMessage, setCheckedCanMessage] = useState(formValues.CanMessage);
-  // const [checkedCanInfo, setCheckedCanInfo] = React.useState(
-  //   formValues.canInfo
-  // );
-  // console.log(checkedCanMessage, "thiiiiiiis");
-  // const toggleCanMessage = () => {
-  //   setCheckedCanMessage(prev => !prev);
-  //   console.log(checkedCanMessage);
-  // };
-
-  // const toggleCanInfo = () => {
-  //   setCheckedCanInfo(prev => !prev);
-  // };
 
   useEffect(() => {
     api.get("/users/" + props.match.params.id).then(res => {
       setFormValues(res.data);
-      console.table(res.data);
     });
   }, []);
 
@@ -90,7 +74,7 @@ const AdminEditUser = props => {
     data.append("canInfo", formValues.canInfo);
 
     api
-      .patch("/users/admin_edit/" + props.match.params.id, data)
+      .patch("/users/admin_edit/" + formValues._id, data)
       .then(res => {
         console.log(res.data);
       })

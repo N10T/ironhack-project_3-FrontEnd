@@ -3,6 +3,8 @@ import APIHandler from "./../api/APIHandler";
 // React
 import React, { useContext } from "react";
 import UserContext from "./../auth/UserContext";
+import { NavLink } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import { useAuth } from "./../auth/useAuth";
 
@@ -105,16 +107,13 @@ export default withRouter(function ButtonAppBar(props) {
           ) : (
             ""
           )}
+          
           <Typography variant="h4" className={classes.title + " vcenter"}>
-            <img
-              src={
-                isLoggedIn
-                  ? "/logo/CocoonWhite.png"
-                  : "/logo/CocoonMainColor.png"
-              }
+          <NavLink to="/user/building" className="styleNone"><img
+              src= "/logo/CocoonWhite.png"
               alt="White Cocoon"
             />
-            co-coon
+            co-coon</NavLink>
           </Typography>
           {/* {window.location.pathname === "/user/building" &&           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -130,7 +129,9 @@ export default withRouter(function ButtonAppBar(props) {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>} */}
+          <NavLink to="/signin" activeStyle={{backgroundColor: "white"}}>
           <ExitToAppIcon id="logout" onClick={handleSignout} />
+          </NavLink>
         </Toolbar>
       </AppBar>
     </div>

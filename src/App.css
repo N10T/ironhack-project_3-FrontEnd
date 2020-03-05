@@ -351,3 +351,13 @@ font-size:0.8em;
 .icon-avatar img {
   height: 100px;
 }
+
+#logout {
+  color: white;
+}
+
+.styleNone {
+  text-decoration: none;
+  color: white;
+  font-family: Amatic SC;
+}

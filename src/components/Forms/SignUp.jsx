@@ -1,6 +1,7 @@
 // React
-import React, { useState } from "react";
-import APIHandler from "./../../api/APIHandler";
+import React, {useState} from "react";
+import APIHandler from './../../api/APIHandler';
+import { Link as RouterLink } from 'react-router-dom';
 
 // Style
 import TextField from "@material-ui/core/TextField";
@@ -122,18 +123,18 @@ export default function SignUp({ history }) {
             // endIcon={<Icon>send</Icon>}
           >
             sign up
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            className={classes.button}
-            size="small"
-            href="/signin"
-            //   endIcon={<Icon>send</Icon>}
-          >
-            sign in
-          </Button>
-        </div>
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+              size="small"
+              component={RouterLink} to="/signin"
+              //   endIcon={<Icon>send</Icon>}
+            >
+              sign in
+            </Button>
+          </div>
       </form>
     </div>
   );

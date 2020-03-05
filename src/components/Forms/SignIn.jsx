@@ -39,9 +39,9 @@ export default function Signin({history}) {
 
     api.post('/auth/signin', formValues).then(res => {
       console.log(res.data);
-      setTimeout(() => {
+      // setTimeout(() => {
         history.push("/user/building")
-      }, 3000);  
+      // }, 3000);  
     }).catch(err => {
       console.log(err.response)
     })

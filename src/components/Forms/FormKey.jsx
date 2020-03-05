@@ -10,11 +10,9 @@ import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import emailjs from "emailjs-com";
+import { v4 as uuidv4 } from 'uuid';
 
-const apiKey = new APIHandler(
-  "https://www.uuidgenerator.net/api/version1",
-  false
-);
+
 const api = new APIHandler();
 
 const useStyles = makeStyles(theme => ({
@@ -60,16 +58,11 @@ export default function FormPropsTextFields() {
     }
     
     useEffect(() => {
-      apiKey
-      .get()
-      .then(DBres => {
-        setKey(DBres.data.trim());
-        templateParams.code = DBres.data.trim();
-      })
-      .catch(err => console.error(err));
+      uuidv4()
     }, []);
     
-    console.log("key",key)
+console.log("key,",key);
+
     useEffect(() => {
       api
       .get("/buildings")
@@ -78,7 +71,7 @@ export default function FormPropsTextFields() {
         console.log(DBres.data);
       })
       .catch(err => console.error(err));
-  }, [key]);
+  }, []);
 
   const handleSubmit = e => {
     e.preventDefault();

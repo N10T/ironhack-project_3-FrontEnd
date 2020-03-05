@@ -342,3 +342,12 @@ font-size:0.8em;
   border: 2px solid #E5B67E;
   background-color: #E5B67E;
 }
+
+.icon-avatar svg {
+  position: absolute;
+  z-index: 10;
+}
+
+.icon-avatar img {
+  height: 100px;
+}

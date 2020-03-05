@@ -79,22 +79,23 @@ export default withRouter(function ButtonAppBar(props) {
     window.location.pathname === "/signin" ||
     window.location.pathname === "/signup" ||
     window.location.pathname === "/discover" ||
-    window.location.pathname === "/" 
-
+    window.location.pathname === "/";
 
   const { currentUser, isLoggedIn } = useAuth();
   const classes = useStyles();
   const userContext = useContext(UserContext);
   const { setCurrentUser } = userContext;
 
-  const handleSignout = () =>
+  const handleSignout = () => {
     api.post("/auth/signout").finally(() => {
-      props.history.push("/signin")
-      setCurrentUser(null);
+      
 
-    });
-    
-  return !isBar() ? (
+      setCurrentUser(null);
+    });window.location.href = "/signin";
+      console.log("YAAAA");
+  };
+
+  return !isBar() && isLoggedIn ? (
     <div className={classes.root}>
       <AppBar position="fixed" color="primary">
         <Toolbar>
@@ -105,7 +106,14 @@ export default withRouter(function ButtonAppBar(props) {
             ""
           )}
           <Typography variant="h4" className={classes.title + " vcenter"}>
-            <img src={isLoggedIn ? "/logo/CocoonWhite.png" : "/logo/CocoonMainColor.png"} alt="White Cocoon" />
+            <img
+              src={
+                isLoggedIn
+                  ? "/logo/CocoonWhite.png"
+                  : "/logo/CocoonMainColor.png"
+              }
+              alt="White Cocoon"
+            />
             co-coon
           </Typography>
           {/* {window.location.pathname === "/user/building" &&           <div className={classes.search}>

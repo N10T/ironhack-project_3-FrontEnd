@@ -16,14 +16,13 @@ const api = new APIHandler();
 
 export default function Messages() {
   const { currentUser, isLoggedIn, isLoading} = useAuth();
-
   const [messages, setMessages] = useState([]);
   const [messagesFiltered, setMessagesFiltered] = useState([]);
   
   useEffect(() => {
     api.get("/messages")
       .then(DBres => {
-        console.log(currentUser._id);
+        // console.log(currentUser._id);
         
         setMessages(DBres.data.map(a=>a.to._id).filter(b=> b === currentUser._id));
         setMessagesFiltered(messages);
@@ -31,7 +30,7 @@ export default function Messages() {
       .catch(err => console.error(err));
     }, [currentUser]);
     
-    console.log(messages)
+    // console.table(messages)
 
   const searchHandler = e => {
     messagesFiltered(

@@ -19,7 +19,7 @@ export default withRouter(function Buildings() {
   const [users, setUsers] = useState([]);
   const [infos, setInfos] = useState([]);
   const [infosFiltered, setInfosFiltered] = useState(infos);
-  const userB = currentUser.buildings;
+  // const userB = currentUser.buildings;
  
  useEffect(() => {
 
@@ -29,7 +29,7 @@ export default withRouter(function Buildings() {
 , []);
 
   useEffect(() => {
-    const userOK = userB ? userB[0] : [];    
+    const userOK = currentUser ? currentUser.buildings[0] : [];    
     setTimeout(()=>{api
       .get(`/buildings/${userOK}`)
       .then(DBres => {

@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 
 export default function Messages({data}) {
 const classes = useStyles();
-console.log("foo");
+// console.table(data);
 
     return (
         <>

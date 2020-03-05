@@ -118,7 +118,7 @@ console.table(formValues)
     }
    
     // For geting the user information is necesary to use a useEffect to get it from the db.
-  
+    if (!currentUser) return null;
     return (
   <div className="user-form">
    <form

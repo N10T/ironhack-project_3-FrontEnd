@@ -33,16 +33,21 @@ export default function LabelBottomNavigation() {
     setValue(newValue);
   };
 
+  const isBar = () =>
+    window.location.pathname === "/signin" ||
+    window.location.pathname === "/signup" ||
+    window.location.pathname === "/discover" ||
+    window.location.pathname === "/";
   return (
-    <BottomNavigation
+    !isBar() && <BottomNavigation
       id="footer"
       value={value}
       onChange={handleChange}
       className={classes.root}
     >
-      <Link to="/" component={RouterLink}>
+      {!isLoggedIn ? <Link to="/" component={RouterLink}>
         <BottomNavigationAction label="Home" value="home" icon={<HomeIcon />} />
-      </Link>
+      </Link>:""}
       {currentUser && (
         <Link to={`/profile/${currentUser._id}`} component={RouterLink}>
           <BottomNavigationAction

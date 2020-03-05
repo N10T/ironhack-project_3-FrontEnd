@@ -77,27 +77,28 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default withRouter(function ButtonAppBar(props) {
-  const isBar = () =>
-    window.location.pathname === "/signin" ||
-    window.location.pathname === "/signup" ||
-    window.location.pathname === "/discover" ||
-    window.location.pathname === "/";
-
   const { currentUser, isLoggedIn } = useAuth();
+  const isBar = () =>
+    window.location.pathname !== "/signin" ||
+    window.location.pathname !== "/signup" ||
+    window.location.pathname !== "/discover" ||
+    window.location.pathname !== "/";
+
   const classes = useStyles();
   const userContext = useContext(UserContext);
   const { setCurrentUser } = userContext;
 
   const handleSignout = () => {
     api.post("/auth/signout").finally(() => {
-      
-
       setCurrentUser(null);
-    });window.location.href = "/signin";
-      console.log("YAAAA");
+    });
+    window.location.href = "/signin";
+    console.log("YAAAA");
   };
 
-  return !isBar() && isLoggedIn ? (
+  if (!currentUser) return null;
+
+  return (
     <div className={classes.root}>
       <AppBar position="fixed" color="primary">
         <Toolbar>
@@ -107,13 +108,11 @@ export default withRouter(function ButtonAppBar(props) {
           ) : (
             ""
           )}
-          
           <Typography variant="h4" className={classes.title + " vcenter"}>
-          <NavLink to="/user/building" className="styleNone"><img
-              src= "/logo/CocoonWhite.png"
-              alt="White Cocoon"
-            />
-            co-coon</NavLink>
+            <NavLink to="/user/building" className="styleNone">
+              <img src="/logo/CocoonWhite.png" alt="White Cocoon" />
+              co-coon
+            </NavLink>
           </Typography>
           {/* {window.location.pathname === "/user/building" &&           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -129,13 +128,11 @@ export default withRouter(function ButtonAppBar(props) {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>} */}
-          <NavLink to="/signin" activeStyle={{backgroundColor: "white"}}>
-          <ExitToAppIcon id="logout" onClick={handleSignout} />
+          <NavLink to="/signin" activeStyle={{ backgroundColor: "white" }}>
+            <ExitToAppIcon id="logout" onClick={handleSignout} />
           </NavLink>
         </Toolbar>
       </AppBar>
     </div>
-  ) : (
-    ""
   );
 });

@@ -1,8 +1,8 @@
 // React
-import React, {useState} from "react";
-import APIHandler from './../../api/APIHandler';
-import { Link as RouterLink } from 'react-router-dom';
-
+import React, { useState, useContext } from "react";
+import APIHandler from "./../../api/APIHandler";
+import { Link as RouterLink } from "react-router-dom";
+import UserContext from "../../auth/UserContext";
 // Styles
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
@@ -23,29 +23,33 @@ const useStyles = makeStyles(theme => ({
 
 const api = new APIHandler();
 
-export default function Signin({history}) {
-
+export default function Signin({ history }) {
   const classes = useStyles();
-
+  const { currentUser, setCurrentUser } = useContext(UserContext);
   const [formValues, setFormValues] = useState({});
 
   const handleInputs = e => {
     const value = e.target.value;
     const name = e.target.name;
-    setFormValues({ ...formValues, [name]: value});
-  }
+    setFormValues({ ...formValues, [name]: value });
+  };
   const handleSubmit = e => {
     e.preventDefault();
 
-    api.post('/auth/signin', formValues).then(res => {
-      console.log(res.data);
-      // setTimeout(() => {
-        history.push("/user/building")
-      // }, 3000);  
-    }).catch(err => {
-      console.log(err.response)
-    })
-  }
+    api
+      .post("/auth/signin", formValues)
+      .then(res => {
+        console.log(res.data);
+        setCurrentUser(res.data.currentUser);
+        // setTimeout(() => {
+        history.push("/user/building");
+
+        // }, 3000);
+      })
+      .catch(err => {
+        console.log(err.response);
+      });
+  };
 
   return (
     <div className="user-form">
@@ -56,44 +60,45 @@ export default function Signin({history}) {
         onSubmit={handleSubmit}
         onChange={handleInputs}
       >
-          {/* <h1>SIGN IN</h1> */}
-          <TextField
+        {/* <h1>SIGN IN</h1> */}
+        <TextField
           required={true}
           id="outlined-basic"
           label="E-mail"
           variant="outlined"
           name="email"
-          />
-          <TextField
+        />
+        <TextField
           type="password"
           required={true}
           id="outlined-basic"
           label="Password"
-          variant="outlined" 
+          variant="outlined"
           name="password"
-          />
-          <div className="one-column">
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              size="large"
-              // endIcon={<Icon>send</Icon>}
-            >
-              sign in
-            </Button>
-            <Button
-              variant="contained"
-              color="secondary"
-              className={classes.button}
-              size="small"
-              component={RouterLink} to="/signup"
-              //   endIcon={<Icon>send</Icon>}
-            >
-              sign up
-            </Button>
-          </div>
+        />
+        <div className="one-column">
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            size="large"
+            // endIcon={<Icon>send</Icon>}
+          >
+            sign in
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            className={classes.button}
+            size="small"
+            component={RouterLink}
+            to="/signup"
+            //   endIcon={<Icon>send</Icon>}
+          >
+            sign up
+          </Button>
+        </div>
       </form>
     </div>
   );

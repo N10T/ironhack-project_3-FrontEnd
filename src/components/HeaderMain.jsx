@@ -1,8 +1,10 @@
 import APIHandler from './../api/APIHandler';
 
 // React
-import React, { useContext } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import UserContext from "./../auth/UserContext";
+
+import {useAuth} from './../auth/useAuth'
 
 // Style
 import { makeStyles, fade } from "@material-ui/core/styles";
@@ -20,7 +22,7 @@ import { withRouter } from "react-router-dom";
 // import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 
 // Component
-import LogOut from "./LogOut";
+// import LogOut from "./LogOut";
 const api = new APIHandler();
 
 
@@ -74,21 +76,20 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default withRouter(function ButtonAppBar(props) {
+  const { currentUser, isLoggedIn, isLoading} = useAuth();
   const classes = useStyles();
   const userContext = useContext(UserContext);
   const { setCurrentUser } = userContext;
-// console.log(props)
 
   const handleSignout = () =>
   api.post("/auth/signout").finally(() => {
-      // props.history.push("/signin")
       setCurrentUser(null);
     });
   return (
     <div className={classes.root}>
       <AppBar position="fixed" color="primary">
         <Toolbar>
-          {true && <AdminDrawer />}
+          {currentUser.role === 'super admin' || currentUser.role === 'admin'?  <AdminDrawer /> :""}
           <Typography variant="h4" className={classes.title + " vcenter"}>
             <img src="/logo/CocoonWhite.png" alt="White Cocoon" />
             co-coon

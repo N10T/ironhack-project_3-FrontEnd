@@ -50,7 +50,7 @@ const api = new APIHandler();
 
 export default function ControlledExpansionPanels({ data }) {
   const [open, setOpen] = React.useState(false);
-  console.table(data);
+  // console.table(data);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -110,16 +110,18 @@ export default function ControlledExpansionPanels({ data }) {
         <ExpansionPanelDetails>
           <Grid item xs={12}>
             <div className={classes.demo}>
-              <List>
+              <List
+              >
 
-                    <ListItem>
+                    
                       <ListItemText
-                        className="small-font"
+                      disablePadding={true}
+                        className="medium-font"
                         primary={`email: ${data.email}`}
                       />{" "}
-                      {data.buildings ? data.buildings.map((a,i)=> a=== "" ? "No building" :<ListItemText
+                      {data.buildings ? data.buildings.map((a,i)=> a=== "" ? "No building" :<ListItemText disablePadding={true}
                       key={i}
-                        className="small-font"
+                        className="medium-font"
                         primary={`building: ${a.name}`}
                       />):""}
                       
@@ -131,7 +133,7 @@ export default function ControlledExpansionPanels({ data }) {
                           // onClick={e => DeleteKey(e, i)}
                         />
                       </ListItemSecondaryAction> */}
-                    </ListItem>
+                    
 
               </List>
             </div>

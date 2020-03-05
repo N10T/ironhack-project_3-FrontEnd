@@ -75,12 +75,11 @@ const EditBuilding = props => {
     const value = e.target.value;
     const name = e.target.name;
     setFormValues({ ...formValues, [name]: value});
-    console.log(formValues);
+    // console.log(formValues);
   };
 
   return ( formValues ?
     <div>
-    {console.log(formValues)}
     <form
         className={classes.root + " one-column"}
         noValidate

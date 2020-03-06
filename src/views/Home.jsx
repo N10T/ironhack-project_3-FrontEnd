@@ -22,7 +22,7 @@ export default function Home() {
         <img src="/logo/CocoonMainColor.png" alt="White Cocoon" />
         <div className="vcenter">
           <h1 className="main-color">co-coon</h1>
-          <p>be aware to next door</p>
+          <p>Community next to you</p>
         </div>
       </div>
 

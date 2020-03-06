@@ -145,7 +145,7 @@ export default withRouter(function Buildings() {
 
 
       <div className="infocards text-focus-in">
-        {!isLoading ? infoMapper(infosFiltered.filter(a=>a.category.includes(category))) : (
+        {infosFiltered ? infoMapper(infosFiltered.filter(a=>a.category.includes(category))) : (
             <ReactLoading
               className="fixed"
               top="50vh"

@@ -1,6 +1,7 @@
 // React
 import React, { useState, useEffect } from "react";
 import APIHandler from "./../../api/APIHandler";
+import ReactLoading from "react-loading";
 
 // Component
 import Avatar from "@material-ui/core/Avatar";
@@ -186,7 +187,7 @@ const AdminEditUser = props => {
       </form>
     </div>
   ) : (
-    <p>Loading ...</p>
+    <ReactLoading position="fixed" top="50vh" left="20vw" type="bubbles" height={10} width="100vw" />
   );
 };
 

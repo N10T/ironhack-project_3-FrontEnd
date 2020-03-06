@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import APIHandler from './../../api/APIHandler'
-
+import ReactLoading from "react-loading";
 // styles
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -192,7 +192,8 @@ const EditBuilding = props => {
             edit
             </Button>
         </form>
-        </div> : <p>Loading ...</p>
+        </div> :     <ReactLoading position="fixed" top="50vh" left="20vw" type="bubbles" height={10} width="100vw" />
+
   );
 };
 

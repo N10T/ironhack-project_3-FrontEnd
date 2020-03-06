@@ -7,6 +7,7 @@ import UserContext from "../../auth/UserContext";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import Alert from '@material-ui/lab/Alert';
 // import AvatarUser from "../Upload/AvatarUser";
 
 const useStyles = makeStyles(theme => ({
@@ -14,6 +15,9 @@ const useStyles = makeStyles(theme => ({
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
       width: 350
+    },
+    '& > * + *': {
+      marginTop: theme.spacing(2),
     },
     button: {
       margin: theme.spacing(1)
@@ -27,6 +31,8 @@ export default function Signin({ history }) {
   const classes = useStyles();
   const { currentUser, setCurrentUser } = useContext(UserContext);
   const [formValues, setFormValues] = useState({});
+  const [alert, setAlert] = useState(false);
+  
 
   const handleInputs = e => {
     const value = e.target.value;
@@ -47,6 +53,10 @@ export default function Signin({ history }) {
         // }, 3000);
       })
       .catch(err => {
+        setAlert(true)
+        setTimeout(() => {
+          setAlert(false)
+        }, 3000);
         console.log(err.response);
       });
   };
@@ -98,6 +108,20 @@ export default function Signin({ history }) {
           >
             sign up
           </Button>
+          <div className={classes.root}>
+      {alert && <Alert id="alert" variant="outlined" severity="error">
+        Wrong email or password
+      </Alert>}
+        {/* <Alert variant="outlined" severity="warning">
+          This is a warning alert — check it out!
+        </Alert>
+        <Alert variant="outlined" severity="info">
+          This is an info alert — check it out!
+        </Alert>
+        <Alert variant="outlined" severity="success">
+          You are logged in
+        </Alert> */}
+    </div>
         </div>
       </form>
     </div>

@@ -17,6 +17,8 @@ import PrintIcon from '@material-ui/icons/OpenWith';
 import ShareIcon from '@material-ui/icons/Share';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import All from '@material-ui/icons/SettingsBackupRestore';
+import Alert from '@material-ui/lab/Alert';
+
 
 // Component
 import InfoCard from "./../components/InfoCard";
@@ -30,6 +32,9 @@ const useStyles = makeStyles(theme => ({
     height: 380,
     transform: 'translateZ(0px)',
     flexGrow: 1,
+  },
+  '& > * + *': {
+    marginTop: theme.spacing(5),
   },
   speedDial: {
     position: 'fixed',
@@ -54,11 +59,15 @@ export default withRouter(function Buildings() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [hidden, setHidden] = React.useState(false);
+  // const [alert, setAlert] = useState(false);
 
   // const handleVisibility = () => {
   //   setHidden(prevHidden => !prevHidden);
   // };
-
+// const noInfo () => {
+//   setAlert(true)
+//           setAlert(false)
+// }
   const handleOpen = () => {
     setOpen(true);
   };
@@ -93,6 +102,7 @@ export default withRouter(function Buildings() {
         setInfosFiltered(DBres.data.informations);
       })
       .catch(err => console.error(err));},10)
+
   }, [currentUser]);
 
   const searchHandler = e => {
@@ -145,17 +155,11 @@ export default withRouter(function Buildings() {
 
 
       <div className="infocards text-focus-in">
-        {infosFiltered? infoMapper(infosFiltered.filter(a=>a.category.includes(category))) : (
-            <ReactLoading
-              className="fixed"
-              top="50vh"
-              left="20vw"
-              type="bubbles"
-              color={palette.palette.primary.main}
-              height={10}
-              width="100vw"
-            />
-          )
+        {infosFiltered ? infosFiltered.length ? infoMapper(infosFiltered.filter(a=>a.category.includes(category))) : (
+                  <Alert id="alert" variant="outlined" severity="info">
+                  No information left
+                </Alert>
+          ) : ""
         }
       </div>
     </>

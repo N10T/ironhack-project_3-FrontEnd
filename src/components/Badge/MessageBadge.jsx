@@ -17,7 +17,7 @@ const api = new APIHandler();
 
 export default function SimpleBadge() {
   const { currentUser, isLoggedIn, isLoading} = useAuth();
-  const [newMessages, setNewMessages] = useState(isLoggedIn ? currentUser.newMessages : 0);
+  const [newMessages, setNewMessages] = useState(currentUser ? currentUser.newMessages : 0);
   const classes = useStyles();
   const  eraseNewMessages = () => api.patch(`users/no-new-messages/${currentUser._id}`)
   

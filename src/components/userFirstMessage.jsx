@@ -30,16 +30,16 @@ const useStyles = makeStyles({
 
 export default function Messages({data,users}) {
 const classes = useStyles();
-const select = (key) => users.filter(u=> u._id === data[key])[0];
-console.log("from",select("from"))
-console.log("to",select("to"))
+const select = (key,info) => users.filter(u=> u._id === data[key])[0][info];
+// console.log("from",select("from","name"))
+// console.log("to",select("to","name"))
     return (
         <>
         <Card className={classes.root}>
       <CardContent>
           <div className="flex space-between">
         <Typography variant="h6" component="h2">
-          
+          {select("from","name")}
         </Typography>
         <Typography className={classes.title} color="secondary" gutterBottom>
         {dayjs(data.sendDate).format("MM/DD HH:MM")}

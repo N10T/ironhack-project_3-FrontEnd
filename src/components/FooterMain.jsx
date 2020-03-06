@@ -45,9 +45,9 @@ export default function LabelBottomNavigation() {
       onChange={handleChange}
       className={classes.root}
     >
-      {!isLoggedIn ? <Link to="/" component={RouterLink}>
+      {/* {!isLoggedIn ? <Link to="/" component={RouterLink}>
         <BottomNavigationAction label="Home" value="home" icon={<HomeIcon />} />
-      </Link>:""}
+      </Link>:""} */}
       {currentUser && (
         <Link to={`/profile/${currentUser._id}`} component={RouterLink}>
           <BottomNavigationAction

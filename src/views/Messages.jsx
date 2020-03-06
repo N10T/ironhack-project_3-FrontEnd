@@ -37,8 +37,6 @@ export default function Messages() {
     
     useEffect(() => setMessagesFiltered([...messages].sort((a,b)=>b.sendDate < a.sendDate ? -1 : 1)),[messages])
 
-// console.table("MIX",mixUser())
-
   const searchHandler = e => {
     setMessagesFiltered(
       messages.filter((message, ind, arr) =>
@@ -50,6 +48,10 @@ export default function Messages() {
       )
     );
   };
+
+function from(){
+}
+from()
   return (
     <div id="messages">
 

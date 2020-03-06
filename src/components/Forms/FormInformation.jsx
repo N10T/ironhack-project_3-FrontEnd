@@ -17,6 +17,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
 import TextField from "@material-ui/core/TextField";
 import {useAuth} from './../../auth/useAuth'
+import Alert from '@material-ui/lab/Alert';
+
 
 const api = new APIHandler();
 
@@ -80,12 +82,19 @@ export default function FormInformation() {
   const [formValues, setFormValues] = useState({});
   const [avatar, setAvatar] = useState("");
   const [tmpAvatar, setTmpAvatar] = useState("");
+  const [alert, setAlert] = useState(false);
 
 
 
   const handleSubmit = e => {
     e.preventDefault();
-
+if(formValues.description.length < 5){
+  setAlert(true)
+  setTimeout(() => {
+    setAlert(false)
+  }, 5000);
+  return
+}
     const data = new FormData();
     data.append("publicationDate", Date.now());
     data.append("category", formValues.category ? formValues.category : "General");
@@ -132,8 +141,8 @@ export default function FormInformation() {
       <Card raised="true" className={classes.root + " center"}>
         <CardHeader
           avatar={
-            <Avatar src={currentUser.avatar ? currentUser.avatar : ""} aria-label="avatar" className={classes.avatar}>
-              {currentUser.name ? currentUser.name.substring(0,1) : ""}
+            <Avatar src={currentUser ? currentUser.avatar : ""} aria-label="avatar" className={classes.avatar}>
+              {currentUser ? currentUser.name.substring(0,1) : ""}
             </Avatar>
           }
 
@@ -163,8 +172,8 @@ export default function FormInformation() {
               </Select>
             </FormControl>
           }
-          title={currentUser.name ? currentUser.name : ""}
-          subheader={currentUser.lastname ? currentUser.lastname : ""}
+          title={currentUser ? currentUser.name : ""}
+          subheader={currentUser ? currentUser.lastname : ""}
         />
         <CardContent>
           <ImageInfo tmpAvatar={tmpAvatar} clbk={handleImage} />
@@ -192,7 +201,9 @@ export default function FormInformation() {
       submit
       </Button>
       </Card>
-   
+      {alert && <Alert id="alert" variant="outlined" severity="warning">
+        Complete the information please
+      </Alert>}
   </form>
   </div>
   );

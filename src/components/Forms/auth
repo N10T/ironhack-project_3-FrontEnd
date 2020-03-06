@@ -2,3 +2,7 @@
 import { useState, useEffect, useContext } from "react";
 import {useAuth} from './../../auth/useAuth'
 const { currentUser, isLoggedIn, isLoading} = useAuth();
+
+
+Trouver tous les messages que l'on m'a envoyé
+trouver les personne qui me les ont envoyé

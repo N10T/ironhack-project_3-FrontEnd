@@ -70,14 +70,14 @@ export default function RecipeReviewCard({data,users}) {
             </IconButton>
           }
           title={data.userOwner ? avatarMatch().name : "UNKNOW"}
-          subheader={dayjs(data.publicationDate).format("MM-DD-YYYY HH:MM")}
+          subheader={dayjs(data.publicationDate).format("MM-DD-YY HH:MM")}
         />
         
-          <CardMedia
+        {data.multimediaContent && <CardMedia
             className={classes.media}
             image={data.multimediaContent}
             title=""
-          />
+          />}
          
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">

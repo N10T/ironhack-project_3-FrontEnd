@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import APIHandler from './../../api/APIHandler';
 
 import {useAuth} from './../../auth/useAuth'
+import { Link as RouterLink } from "react-router-dom";
 
 // Style
 import { makeStyles } from "@material-ui/core/styles";
@@ -17,6 +18,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
 import TextField from "@material-ui/core/TextField";
 import Icon from '@material-ui/icons/Send';
+import * as dayjs from "dayjs";
 
 const api = new APIHandler();
 
@@ -133,10 +135,12 @@ console.table(formValues)
         <Card raised="true" className={classes.root + " center"}>
           <CardHeader
             avatar={
-              <Avatar aria-label="avatar" className={classes.avatar}>
+              currentUser && <Avatar aria-label="avatar" className={classes.avatar} src={currentUser.avatar} >
                 A
               </Avatar>
-            }
+          }
+          title={currentUser.name}  
+          subheader={dayjs(Date.now()).format("MM-DD-YY HH:MM")}
   
             action={
               <FormControl variant="outlined" className={classes.formControl}>
@@ -184,6 +188,8 @@ console.table(formValues)
         color="primary"
         className={classes.button}
         endIcon={<Icon />}
+        // component={RouterLink}
+        // href="/user/messages"
       >
         Send
       </Button>

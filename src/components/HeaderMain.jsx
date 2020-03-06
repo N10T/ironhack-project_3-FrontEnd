@@ -114,23 +114,9 @@ export default withRouter(function ButtonAppBar(props) {
               co-coon
             </NavLink>
           </Typography>
-          {/* {window.location.pathname === "/user/building" &&           <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              onChange={e => props.clbk(e)}
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>} */}
-          <NavLink to="/signin" activeStyle={{ backgroundColor: "white" }}>
+{ isBar &&         <NavLink to="/signin" activeStyle={{ backgroundColor: "white" }}>
             <ExitToAppIcon id="logout" onClick={handleSignout} />
-          </NavLink>
+          </NavLink>}
         </Toolbar>
       </AppBar>
     </div>

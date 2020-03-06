@@ -76,6 +76,7 @@ export default function Signin({ history }) {
           id="outlined-basic"
           label="E-mail"
           variant="outlined"
+          defaultValue="@gmail.com"
           name="email"
         />
         <TextField

@@ -29,7 +29,7 @@ export default function SimpleBadge() {
   // console.log("NM",isLoggedIn)
   return (
     <div className={classes.root}>
-      <Badge badgeContent={isLoggedIn ? currentUser.newMessages : "X"} onClick={eraseNewMessages} color="primary">
+      <Badge badgeContent={currentUser ? currentUser.newMessages : "X"} onClick={eraseNewMessages} color="primary">
         <ForumIcon />
       </Badge>
     </div>

@@ -63,25 +63,25 @@ function App() {
               path="/admin/create-building"
               component={FormBuilding}
             />
-            <Route exact path="/admin/buildings" component={AllBuildings} />
-            <Route exact path="/admin/users" component={AllUsers} />
-            <Route exact path="/user/messages" component={Messages} />
-            <Route exact path="/admin/building/:id" component={EditBuilding} />
-            <Route exact path="/admin/key" component={FormKey} />
-            <Route exact path="/profile/:id" component={EditUser} />
-            <Route
+            <ProtectedRoute exact path="/admin/buildings" component={AllBuildings} />
+            <ProtectedRoute exact path="/admin/users" component={AllUsers} />
+            <ProtectedRoute exact path="/user/messages" component={Messages} />
+            <ProtectedRoute exact path="/admin/building/:id" component={EditBuilding} />
+            <ProtectedRoute exact path="/admin/key" component={FormKey} />
+            <ProtectedRoute exact path="/profile/:id" component={EditUser} />
+            <ProtectedRoute
               exact
               path="/admin/edit_user/:id"
               component={AdminEditUser}
             />
-            <Route
+            <ProtectedRoute
               exact
               path="/building/create-information"
               component={FormInformation}
             />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/signin" component={SignIn} />
-            <Route exact path="/user/create-a-chat" component={NewChat} />
+            <ProtectedRoute exact path="/user/create-a-chat" component={NewChat} />
           </Switch>
           <FooterMain />
         </ThemeProvider>

@@ -99,7 +99,7 @@ export default withRouter(function Buildings() {
       .then(DBres => {
         
         setInfos(DBres.data.informations);
-        setInfosFiltered(DBres.data.informations);
+        setInfosFiltered([...DBres.data.informations].sort((a,b)=>b.publicationDate < a.publicationDate ? -1 : 1));
       })
       .catch(err => console.error(err));},10)
 
@@ -113,7 +113,7 @@ export default withRouter(function Buildings() {
           ? info.textContent
               .toLowerCase()
               .includes(e.target.value.toLowerCase())
-          : arr
+          : [...arr].sort((a,b)=>b.publicationDate < a.publicationDate ? -1 : 1)
       )
     );
   };

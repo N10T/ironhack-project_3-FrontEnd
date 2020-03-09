@@ -1,4 +1,5 @@
 import React from "react";
+import APIHandler from "../api/APIHandler";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
@@ -16,8 +17,11 @@ import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import {useAuth} from './../auth/useAuth'
-//Moment - Dealing with time
+import DeleteIcon from "@material-ui/icons/Delete";
 import * as dayjs from "dayjs";
+
+
+const api = new APIHandler();
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -42,8 +46,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+
 export default function RecipeReviewCard({data,users}) {
-  const { isLoading} = useAuth();
+  const { currentUser, isLoading} = useAuth();
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   
@@ -51,11 +56,11 @@ export default function RecipeReviewCard({data,users}) {
     setExpanded(!expanded);
   };
   
- 
+  
   const avatarMatch = () => users.filter(u => u._id === data.userOwner)[0]
-
+  const canDelete = () => currentUser.role.includes("admin") || currentUser._id === data.userOwner
   return (
-!isLoading ? 
+    !isLoading ? 
     <div className="center card">
       {data.publicationDate ? <Card className={classes.root}>
         <CardHeader
@@ -64,9 +69,9 @@ export default function RecipeReviewCard({data,users}) {
               
             </Avatar>
           }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
+         action={
+          canDelete && <IconButton aria-label="delete">
+              <DeleteIcon onClick={()=>api.delete(`/informations/${data._id}`)}/>
             </IconButton>
           }
           title={data.userOwner ? avatarMatch().name : "UNKNOW"}

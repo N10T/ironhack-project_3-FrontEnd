@@ -65,9 +65,9 @@ export default function LabelBottomNavigation() {
           icon={<AddCircleIcon />}
         />
       </Link>
-      <Link to="/user/messages" component={RouterLink}>
+      {/* <Link to="/user/messages" component={RouterLink}>
         <BottomNavigationAction value="Messages" icon={<MessageBadge />} />
-      </Link>
+      </Link> */}
       <Link to="/user/building" component={RouterLink}>
         <BottomNavigationAction
           label=""

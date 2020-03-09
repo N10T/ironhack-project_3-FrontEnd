@@ -5,8 +5,8 @@ import { withRouter } from "react-router-dom";
 import { useAuth } from "./../auth/useAuth";
 // Style
 import { makeStyles } from '@material-ui/core/styles';
-import ReactLoading from "react-loading";
-import Button from '@material-ui/core/Button';
+// import ReactLoading from "react-loading";
+// import Button from '@material-ui/core/Button';
 import Backdrop from '@material-ui/core/Backdrop';
 import SpeedDial from '@material-ui/lab/SpeedDial';
 import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
@@ -148,11 +148,6 @@ export default withRouter(function Buildings() {
         ))}
       </SpeedDial>
     </div>
-
-
-
-    
-
 
       <div className="infocards text-focus-in">
         {infosFiltered ? infosFiltered.length ? infoMapper(infosFiltered.filter(a=>a.category.includes(category))) : (

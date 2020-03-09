@@ -20,7 +20,7 @@ export default function Discover() {
 
     return (
         <div className="one-column center discover">
-            <iframe height="315" src="https://www.youtube.com/embed/p-D2kcxihOk?start=2" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe height="315" src="https://www.youtube.com/embed/f7JUimN6dKo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <Button
         href="/signin"
         variant="contained"

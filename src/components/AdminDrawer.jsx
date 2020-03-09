@@ -80,7 +80,7 @@ export default function SwipeableTemporaryDrawer() {
 
   return (
     <div>
-      <MenuOpenIcon id="Admin-icon" onClick={toggleDrawer("left", true)} />
+      <MenuOpenIcon id="admin-icon" onClick={toggleDrawer("left", true)} />
       <SwipeableDrawer
         open={state.left}
         onClose={toggleDrawer("left", false)}
